@@ -59,7 +59,7 @@ public function up(): void
         $table->id();
         $table->string('title');
         $table->string('writer');
-        $table->unsignedSmallInteger('publication_ear');
+        $table->unsignedSmallInteger('publication_year');
         $table->text('description')->nullable();
         $table->timestamps();
     });
