@@ -203,8 +203,8 @@ class BookController extends Controller
     {
         $book = Book::query()
             ->when($request->q, function ($query, $q) {
-                $query->where('judul', 'like', "%{$q}%")
-                      ->orWhere('penulis', 'like', "%{$q}%");
+                $query->where('title', 'like', "%{$q}%")
+                      ->orWhere('writer', 'like', "%{$q}%");
             })
             ->latest()
             ->paginate(10)
@@ -486,7 +486,7 @@ mkdir -p resources/views/layouts resources/views/book
 ```blade
 @extends('layouts.app')
 
-@section('title', $book->judul)
+@section('title', $book->title)
 
 @section('content')
 <div class="card">
@@ -544,10 +544,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 uses(RefreshDatabase::class);
 
 $dataValid = [
-    'judul' => 'Laravel untuk Pemula',
-    'penulis' => 'Budi Santoso',
-    'tahun_terbit' => 2024,
-    'deskripsi' => 'Belajar Laravel dari nol.',
+    'title' => 'Laravel untuk Pemula',
+    'writer' => 'Budi Santoso',
+    'publication_year' => 2024,
+    'description' => 'Belajar Laravel dari nol.',
 ];
 
 it('menampilkan daftar buku', function () {
@@ -562,12 +562,12 @@ it('dapat menambah buku', function () use ($dataValid) {
     $this->post(route('book.store'), $dataValid)
         ->assertRedirect(route('book.index'));
 
-    $this->assertDatabaseHas('books', ['judul' => 'Laravel untuk Pemula']);
+    $this->assertDatabaseHas('books', ['title' => 'Laravel untuk Pemula']);
 });
 
 it('menolak data tidak valid saat menambah', function () {
     $this->post(route('book.store'), [])
-        ->assertSessionHasErrors(['judul', 'penulis', 'tahun_terbit']);
+        ->assertSessionHasErrors(['title', 'writer', 'publication_year']);
 });
 
 it('menampilkan detail buku', function () {
@@ -575,7 +575,7 @@ it('menampilkan detail buku', function () {
 
     $this->get(route('book.show', $book))
         ->assertOk()
-        ->assertSee($book->judul);
+        ->assertSee($book->title);
 });
 
 it('dapat memperbarui buku', function () use ($dataValid) {
@@ -586,7 +586,7 @@ it('dapat memperbarui buku', function () use ($dataValid) {
 
     $this->assertDatabaseHas('books', [
         'id' => $book->id,
-        'judul' => 'Laravel untuk Pemula',
+        'title' => 'Laravel untuk Pemula',
     ]);
 });
 
