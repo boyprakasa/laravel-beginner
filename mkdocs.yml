@@ -1,0 +1,24 @@
+site_name: Laravel Mulai Dari Nol
+theme:
+  name: material
+  language: id
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Ganti ke mode gelap
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Ganti ke mode terang
+  features:
+    - navigation.instant
+    - content.code.copy
+    - search.suggest
+
+nav:
+  - Beranda: index.md
+  - Windows: windows.md
+  - macOS: macos.md
