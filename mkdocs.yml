@@ -28,6 +28,7 @@ nav:
   - Beranda: index.md
   - Windows: windows.md
   - macOS: macos.md
+  - Linux: linux.md
 
 markdown_extensions:
   - admonition
