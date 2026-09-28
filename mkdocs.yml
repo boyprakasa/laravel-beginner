@@ -26,9 +26,14 @@ theme:
 
 nav:
   - Beranda: index.md
-  - Windows: windows.md
-  - macOS: macos.md
-  - Linux: linux.md
+  - Instalasi:
+      - Windows: windows.md
+      - macOS: macos.md
+      - Linux: linux.md
+  - Dasar-dasar:
+      - File .env: env.md
+      - Composer: composer.md
+      - npm dan npx: npm.md
 
 markdown_extensions:
   - admonition
