@@ -12,9 +12,7 @@ Panduan ini membuat aplikasi kecil **Perpustakaan Mini** untuk mempraktikkan emp
 Yang dipelajari: migration, model, factory, resource controller, validasi, Blade, flash message, pagination, pencarian, dan feature test.
 
 !!! note "Prasyarat"
-Laravel dan PHP sudah terpasang (lihat panduan instalasi: [Windows](windows.md), [macOS](macos.md), atau [Linux](linux.md)). Database memakai **SQLite** bawaan Laravel, jadi tidak perlu install MySQL.
-
-    Disarankan membaca dulu dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
+Laravel dan PHP sudah terpasang (lihat panduan instalasi: [Windows](windows.md), [macOS](macos.md), atau [Linux](linux.md)). Database memakai **SQLite** bawaan Laravel, jadi tidak perlu install MySQL. Disarankan membaca dulu dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
 
 ---
 
