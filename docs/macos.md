@@ -204,3 +204,8 @@ Contoh pemakaian: `a migrate`, `a make:model Post -a`.
 | `optimize:clear` | `config:clear`, `route:clear`, `view:clear`, dst. | Membersihkan semua cache sekaligus |
 
 Nama script Composer di atas bisa dicek di bagian `scripts` pada `composer.json` project.
+
+## 5. Langkah berikutnya
+
+- Pelajari dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
+- Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

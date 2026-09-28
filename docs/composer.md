@@ -86,3 +86,9 @@ Untuk memasang versi tertentu: `composer require nama/package:^2.0`.
 | Kehabisan memori | Jalankan sekali dengan batas memori dimatikan. Bash (Linux, macOS): `COMPOSER_MEMORY_LIMIT=-1 composer require nama/package`. PowerShell: `$env:COMPOSER_MEMORY_LIMIT=-1` lalu jalankan commandnya. |
 | Class baru tidak ditemukan | `composer dump-autoload` |
 | Composer berperilaku aneh | `composer diagnose` untuk memeriksa masalah umum |
+
+## Lanjut belajar
+
+- [File `.env`](env.md): pengaturan aplikasi dan rahasia.
+- [npm dan npx](npm.md): package JavaScript dan deploy aset.
+- Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

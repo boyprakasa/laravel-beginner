@@ -122,3 +122,9 @@ Jika server tidak punya Node.js, jalankan `npm run build` di komputer kamu atau 
 | `command not found: npm` atau `node` | Node.js belum terpasang atau terminal belum dibuka ulang. Cek `node --version`. |
 | Error saat `npm install` atau `node_modules` rusak | Hapus `node_modules` lalu pasang ulang. Bash: `rm -rf node_modules && npm install`. PowerShell: `Remove-Item -Recurse -Force node_modules; npm install`. |
 | Error konflik versi (`ERESOLVE`) | Baca pesannya dulu, biasanya ada package yang belum cocok dengan versi lain. Menambahkan `--legacy-peer-deps` bisa melewatinya, tetapi gunakan sebagai jalan terakhir. |
+
+## Lanjut belajar
+
+- [File `.env`](env.md): pengaturan aplikasi dan rahasia.
+- [Composer](composer.md): memasang package PHP baru.
+- Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

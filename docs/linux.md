@@ -292,3 +292,8 @@ Valet di Linux adalah proyek komunitas, jadi kadang ada masalah yang tidak terja
 /bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
 ```
 Setelah itu buat project dengan `laravel new my-app`, lalu jalankan `composer run dev` dan buka `http://localhost:8000`.
+
+## 6. Langkah berikutnya
+
+- Pelajari dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
+- Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

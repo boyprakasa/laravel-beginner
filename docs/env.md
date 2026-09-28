@@ -103,3 +103,9 @@ Perubahan di `.env` tidak selalu langsung terbaca. Lakukan sesuai kondisi:
 - Di production, pastikan `APP_ENV=production` dan `APP_DEBUG=false`. Kalau `APP_DEBUG=true`, pengunjung bisa melihat detail error, termasuk sebagian isi konfigurasi.
 - Jangan mengganti `APP_KEY` pada aplikasi yang sudah berjalan, kecuali kamu paham akibatnya. Data terenkripsi dan sesi login yang sudah ada bisa jadi tidak terbaca lagi.
 - Kalau ada kunci rahasia yang tidak sengaja ter-commit, anggap sudah bocor dan buat kunci baru dari penyedia layanannya.
+
+## Lanjut belajar
+
+- [Composer](composer.md): memasang package PHP baru.
+- [npm dan npx](npm.md): package JavaScript dan deploy aset.
+- Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

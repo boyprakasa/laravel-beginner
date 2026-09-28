@@ -15,3 +15,7 @@ Pilih panduan sesuai sistem operasi kamu:
 - [File `.env`](env.md): pengaturan aplikasi, database, dan rahasia.
 - [Composer](composer.md): mengelola dan memasang package PHP.
 - [npm dan npx](npm.md): package JavaScript, `npm run dev`, dan deploy.
+
+## Latihan
+
+- [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md): membuat aplikasi Perpustakaan Mini dari migration sampai feature test.
