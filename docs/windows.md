@@ -1,8 +1,3 @@
----
-layout: default
-title: Panduan Laravel 13 dengan Herd di Windows
----
-
 # Panduan Laravel 13 dengan Herd di Windows
 
 Panduan instalasi Laravel dari nol memakai Laravel Herd di Windows, lengkap dengan daftar command Herd dan Artisan beserta penjelasannya untuk pemula. Perintah dasar tidak diubah; shortcut hanya tambahan.
@@ -145,7 +140,8 @@ Contoh: `php artisan make:model Product -mfs` membuat model, migrasi, factory, d
 | `db:show` dan `db:table` | Melihat ringkasan database atau struktur satu tabel, tanpa aplikasi database terpisah. | `php artisan db:table users` |
 | `model:show` | Menampilkan atribut dan relasi sebuah model. | `php artisan model:show Product` |
 
-> **Perhatian:** `migrate:fresh` dan `migrate:refresh` **menghapus data**. Pakai hanya di development, jangan di production.
+!!! warning "Perhatian"
+    `migrate:fresh` dan `migrate:refresh` **menghapus data**. Pakai hanya di development, jangan di production.
 
 ### 3.5 Route, cache, dan optimasi
 

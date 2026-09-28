@@ -1,11 +1,11 @@
----
-layout: default
-title: Laravel Mulai Dari Nol
----
+# Laravel untuk Pemula
 
-# Laravel Mulai Dari Nol
+Panduan langkah demi langkah untuk memulai Laravel 13 dari nol: instalasi, command Herd, command Artisan beserta penjelasannya, dan shortcut yang mempercepat kerja. Bahasanya dibuat mudah dipahami untuk pemula.
 
-Panduan instalasi Laravel 13 dari awal, lengkap dengan command dan penjelasannya untuk pemula. Pilih sesuai sistem operasi kamu:
+Pilih panduan sesuai sistem operasi kamu:
 
 - [Windows (Laravel Herd)](windows.md)
 - [macOS (Laravel Herd)](macos.md)
+
+!!! info "Segera hadir"
+    Panduan Linux dengan Laravel Valet.

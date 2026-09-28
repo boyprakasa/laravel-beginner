@@ -1,4 +1,8 @@
-site_name: Laravel Mulai Dari Nol
+site_name: Laravel untuk Pemula
+site_description: Panduan instalasi Laravel, Herd, dan Artisan dari nol untuk pemula
+# site_url: https://NAMAUSER.github.io/NAMAREPO/
+# repo_url: https://github.com/NAMAUSER/NAMAREPO
+
 theme:
   name: material
   language: id
@@ -15,6 +19,8 @@ theme:
         name: Ganti ke mode terang
   features:
     - navigation.instant
+    - navigation.top
+    - toc.follow
     - content.code.copy
     - search.suggest
 
@@ -22,3 +28,12 @@ nav:
   - Beranda: index.md
   - Windows: windows.md
   - macOS: macos.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
