@@ -1,6 +1,6 @@
 # CRUD dengan Relasi Many-to-Many (Penulis)
 
-Panduan ini menjelaskan cara mengganti campo **writer** (string) pada model `Book` menjadi relasi **many-to-many** dengan model `Author` (Penulis). Setelah perubahan ini, satu buku dapat memiliki banyak penulis, dan satu penulis dapat menulis banyak buku.
+Panduan ini menjelaskan cara mengganti kolom **writer** (string) pada model `Book` menjadi relasi **many-to-many** dengan model `Author` (Penulis). Setelah perubahan ini, satu buku dapat memiliki banyak penulis, dan satu penulis dapat menulis banyak buku.
 
 !!! note "Prasyarat"
     Anda sudah memiliki aplikasi CRUD Buku yang berjalan dari tutorial [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md). Jika belum, silakan ikuti terlebih dahulu tutorial tersebut.
@@ -42,7 +42,7 @@ php artisan migrate
 
 ## 2. Menghapus Kolom `writer` dari Tabel `books`
 
-Karena kita akan mengganti campo `writer` dengan relasi ke `Author`, kita perlu menghapus kolom `writer` dari tabel `books`.
+Karena kita akan mengganti kolom `writer` dengan relasi ke `Author`, kita perlu menghapus kolom `writer` dari tabel `books`.
 
 Buat migration untuk menghapus kolom:
 
