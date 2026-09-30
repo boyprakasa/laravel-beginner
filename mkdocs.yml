@@ -38,6 +38,7 @@ nav:
   - Aplikasi Uji Coba:
       - CRUD Data Buku: aplikasi-ujicoba-crud.md
       - CRUD dengan Relasi: crud-relasi.md
+      - CRUD dengan Relasi Many-to-Many: crud-many-to-many.md
 
 markdown_extensions:
   - admonition
