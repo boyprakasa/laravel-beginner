@@ -35,6 +35,7 @@ nav:
       - File .env: env.md
       - Composer: composer.md
       - npm dan npx: npm.md
+      - Halaman Beranda: halaman-beranda.md
   - Komponen Blade:
       - Navigasi Menu: komponen-navigasi.md
   - Aplikasi Uji Coba:

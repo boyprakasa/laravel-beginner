@@ -39,7 +39,8 @@ class NavMenu extends Component
      * Daftar item menu.
      * Setiap item adalah array dengan kunci:
      * - 'label': Teks yang ditampilkan
-     * - 'route': Nama route (misalnya 'home', 'book.index')
+     * - 'route': Nama route (misalnya 'book.index')
+     * - 'url': URL langsung (misalnya '/')
      * - 'activeWhen': Opsional, kondisi tambahan untuk menandai aktif (misalnya 'book.*')
      */
     public array $items;
@@ -151,7 +152,7 @@ Buka file layout Anda, misalnya `resources/views/layouts/app.blade.php`, dan tem
 <body>
     <!-- Tampilkan komponen navigasi -->
     <x-nav-menu :items="[
-        ['label' => 'Beranda', 'route' => 'home'],
+        ['label' => 'Beranda', 'url' => '/'],
         ['label' => 'Daftar Buku', 'route' => 'book.index'],
         ['label' => 'Tambah Buku', 'route' => 'book.create'],
         ['label' => 'Kategori', 'route' => 'category.index'],
@@ -239,7 +240,7 @@ public function boot(): void
 {
     View::composer('*', function ($view) {
         $view->with('navMenuItems', [
-            ['label' => 'Beranda', 'route' => 'home'],
+            ['label' => 'Beranda', 'url' => '/'],
             ['label' => 'Daftar Buku', 'route' => 'book.index'],
             ['label' => 'Tambah Buku', 'route' => 'book.create'],
             ['label' => 'Kategori', 'route' => 'category.index'],
