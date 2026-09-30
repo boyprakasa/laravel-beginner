@@ -37,6 +37,7 @@ nav:
       - npm dan npx: npm.md
   - Aplikasi Uji Coba:
       - CRUD Data Buku: aplikasi-ujicoba-crud.md
+      - CRUD dengan Relasi: crud-relasi.md
 
 markdown_extensions:
   - admonition
