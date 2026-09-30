@@ -35,6 +35,8 @@ nav:
       - File .env: env.md
       - Composer: composer.md
       - npm dan npx: npm.md
+  - Komponen Blade:
+      - Navigasi Menu: komponen-navigasi.md
   - Aplikasi Uji Coba:
       - CRUD Data Buku: aplikasi-ujicoba-crud.md
       - CRUD dengan Relasi: crud-relasi.md
