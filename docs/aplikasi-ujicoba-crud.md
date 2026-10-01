@@ -103,7 +103,7 @@ class Book extends Model
 ```
 
 !!! info "Kenapa `$fillable`?"
-Daftar ini menentukan kolom mana yang boleh diisi lewat `Book::create([...])`. Ini melindungi dari _mass assignment_, yaitu pengguna mengirim kolom yang seharusnya tidak boleh diubah.
+    Daftar ini menentukan kolom mana yang boleh diisi lewat `Book::create([...])`. Ini melindungi dari _mass assignment_, yaitu pengguna mengirim kolom yang seharusnya tidak boleh diubah.
 
 ---
 
@@ -522,7 +522,7 @@ Buka `http://localhost:8000` (atau `http://ujicoba-crud.test` bila memakai Herd)
 - [ ] Hapus buku menampilkan konfirmasi, lalu data hilang
 
 !!! tip "Tidak perlu `npm run dev`"
-Aplikasi ini memakai Bootstrap dari CDN, jadi tidak membutuhkan Vite. Kalau nanti kamu mengelola CSS dan JS sendiri, lihat [npm dan npx](npm.md). Pengaturan database (SQLite) tersimpan di file `.env`, penjelasannya ada di [File `.env`](env.md).
+    Aplikasi ini memakai Bootstrap dari CDN, jadi tidak membutuhkan Vite. Kalau nanti kamu mengelola CSS dan JS sendiri, lihat [npm dan npx](npm.md). Pengaturan database (SQLite) tersimpan di file `.env`, penjelasannya ada di [File `.env`](env.md).
 
 ---
 
