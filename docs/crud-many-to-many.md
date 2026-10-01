@@ -141,7 +141,7 @@ class Book extends Model
     // Relasi many-to-many ke Author
     public function authors()
     {
-        return $this->belongsToMany(Author::class);
+        return $this->belongsToMany(Author::class, 'book_author');
     }
 }
 ```
@@ -167,7 +167,7 @@ class Author extends Model
     // Relasi many-to-many ke Book
     public function books()
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsToMany(Book::class, 'book_author');
     }
 }
 ```
