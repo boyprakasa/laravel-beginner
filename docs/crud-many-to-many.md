@@ -405,7 +405,7 @@ Hapus field input untuk `writer` dan ganti dengan field checkbox untuk penulis (
                        type="checkbox"
                        name="author_ids[]"
                        value="{{ $author->id }}"
-                       {{ in_array($author->id, old('author_ids', $book->authors->pluck('id')->toArray())) ? 'checked' : '' }}
+                       {{ in_array($author->id, old('author_ids', isset($book) ? $book->authors->pluck('id')->toArray() : [])) ? 'checked' : '' }}
                 >
                 <label class="form-check-label">{{ $author->name }}</label>
             </div>

@@ -406,7 +406,7 @@ mkdir -p resources/views/layouts resources/views/book
 <div class="mb-3">
     <label for="title" class="form-label">Judul</label>
     <input type="text" id="title" name="title"
-           value="{{ old('title', $book->title ?? '') }}"
+           value="{{ old('title', isset($book) ? $book->title : '') }}"
            class="form-control @error('title') is-invalid @enderror">
     @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
@@ -414,7 +414,7 @@ mkdir -p resources/views/layouts resources/views/book
 <div class="mb-3">
     <label for="writer" class="form-label">Penulis</label>
     <input type="text" id="writer" name="writer"
-           value="{{ old('writer', $book->writer ?? '') }}"
+           value="{{ old('writer', isset($book) ? $book->writer : '') }}"
            class="form-control @error('writer') is-invalid @enderror">
     @error('writer') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
@@ -422,7 +422,7 @@ mkdir -p resources/views/layouts resources/views/book
 <div class="mb-3">
     <label for="publication_year" class="form-label">Tahun Terbit</label>
     <input type="number" id="publication_year" name="publication_year"
-           value="{{ old('publication_year', $book->publication_year ?? '') }}"
+           value="{{ old('publication_year', isset($book) ? $book->publication_year : '') }}"
            class="form-control @error('publication_year') is-invalid @enderror">
     @error('publication_year') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
@@ -430,7 +430,7 @@ mkdir -p resources/views/layouts resources/views/book
 <div class="mb-3">
     <label for="description" class="form-label">Deskripsi</label>
     <textarea id="description" name="description" rows="4"
-              class="form-control @error('description') is-invalid @enderror">{{ old('description', $book->description ?? '') }}</textarea>
+              class="form-control @error('description') is-invalid @enderror">{{ old('description', isset($book) ? $book->description : '') }}</textarea>
     @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
 </div>
 ```
