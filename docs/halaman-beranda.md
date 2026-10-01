@@ -183,7 +183,7 @@ Jika Anda belum membuat controller dan route untuk `home`, maka menggunakan `'ro
 ## 6. Tantangan Lanjutan
 
 Setelah halaman beranda dasar berjalan, Anda bisa mencoba:
-- Lihat contoh tampilan yang sudah jadi: https://laravel.gemes.bond/
+- Lihat contoh tampilan yang sudah jadi: [laravel.gemes.bond] (https://laravel.gemes.bond/)
 - Tambahkan navigasi menu menggunakan komponen Blade yang dapat digunakan kembali: [Komponen Blade: Navigasi Menu](komponen-navigasi.md)
 - Menambahkan grafik atau chart menggunakan Chart.js atau library lain untuk menampilkan statistik buku secara visual.
 - Menampilkan notifikasi atau flash message ketika ada perubahan data (misalnya setelah menambah buku).
