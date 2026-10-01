@@ -1,0 +1,1965 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Panduan instalasi Laravel, Herd, dan Artisan dari nol untuk pemula">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../macos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Windows - Laravel untuk Pemula</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#panduan-laravel-13-dengan-herd-di-windows" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel untuk Pemula" class="md-header__button md-logo" aria-label="Laravel untuk Pemula" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel untuk Pemula
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Windows
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Ganti ke mode gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Ganti ke mode gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Ganti ke mode terang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Ganti ke mode terang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cari">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Kosongkan" aria-label="Kosongkan" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Mempersiapkan pencarian
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigasi" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel untuk Pemula" class="md-nav__button md-logo" aria-label="Laravel untuk Pemula" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Laravel untuk Pemula
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beranda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalasi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instalasi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-instalasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instalasi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Instalasi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-install-herd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Install Herd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-verifikasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Verifikasi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-masuk-ke-folder-parked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Masuk ke folder parked
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-buat-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Buat project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-jalankan-dan-buka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Jalankan dan buka
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-database-dan-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Database dan HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-command-herd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Command Herd
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Command Artisan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Command Artisan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-info-dan-bantuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Info dan bantuan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-generator-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Generator (make:*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-flag-singkat-pada-makemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Flag singkat pada make:model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-route-cache-dan-optimasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Route, cache, dan optimasi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-queue-jadwal-dan-lainnya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Queue, jadwal, dan lainnya
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-shortcut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Shortcut
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Shortcut">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-alias-a-untuk-php-artisan-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Alias a untuk php artisan (PowerShell)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shortcut-lain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Shortcut lain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-langkah-berikutnya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Langkah berikutnya
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dasar-dasar
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dasar-dasar
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File .env
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../npm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    npm dan npx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../halaman-beranda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Halaman Beranda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aplikasi Uji Coba
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aplikasi Uji Coba
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aplikasi-ujicoba-crud/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD Data Buku
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crud-relasi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD dengan Relasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crud-many-to-many/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD dengan Relasi Many-to-Many
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Komponen Blade
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Komponen Blade
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../komponen-navigasi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigasi Menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-instalasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Instalasi
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Instalasi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-install-herd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Install Herd
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-verifikasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Verifikasi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-masuk-ke-folder-parked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Masuk ke folder parked
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-buat-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Buat project
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-jalankan-dan-buka" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Jalankan dan buka
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-database-dan-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Database dan HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-command-herd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Command Herd
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-command-artisan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Command Artisan
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Command Artisan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-info-dan-bantuan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Info dan bantuan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-generator-make" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Generator (make:*)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-flag-singkat-pada-makemodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Flag singkat pada make:model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Database
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-route-cache-dan-optimasi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Route, cache, dan optimasi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-queue-jadwal-dan-lainnya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Queue, jadwal, dan lainnya
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-shortcut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Shortcut
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Shortcut">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-alias-a-untuk-php-artisan-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Alias a untuk php artisan (PowerShell)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shortcut-lain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Shortcut lain
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-langkah-berikutnya" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Langkah berikutnya
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="panduan-laravel-13-dengan-herd-di-windows">Panduan Laravel 13 dengan Herd di Windows<a class="headerlink" href="#panduan-laravel-13-dengan-herd-di-windows" title="Permanent link">&para;</a></h1>
+<p>Panduan instalasi Laravel dari nol memakai Laravel Herd di Windows, lengkap dengan daftar command Herd dan Artisan beserta penjelasannya untuk pemula. Perintah dasar tidak diubah; shortcut hanya tambahan.</p>
+<p>Laravel 13 membutuhkan <strong>PHP 8.3 atau lebih baru</strong>. Herd sudah membawa PHP terbaru, jadi kamu tidak perlu install PHP sendiri.</p>
+<h2 id="1-instalasi">1. Instalasi<a class="headerlink" href="#1-instalasi" title="Permanent link">&para;</a></h2>
+<h3 id="11-install-herd">1.1 Install Herd<a class="headerlink" href="#11-install-herd" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Unduh installer Herd untuk Windows dari <a href="https://herd.laravel.com">herd.laravel.com</a>.</li>
+<li>Jalankan installer sampai selesai, lalu buka Herd sekali.</li>
+<li>Herd otomatis memasang PHP, Composer, Node.js, npm, dan installer <code>laravel</code>.</li>
+</ol>
+<h3 id="12-verifikasi">1.2 Verifikasi<a class="headerlink" href="#12-verifikasi" title="Permanent link">&para;</a></h3>
+<p>Buka <strong>PowerShell</strong> atau <strong>Windows Terminal</strong> yang baru (terminal lama belum mengenali PATH yang baru):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">herd</span> <span class="p">-</span><span class="n">-version</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">php</span> <span class="p">-</span><span class="n">-version</span>        <span class="c"># harus 8.3 atau lebih baru</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">composer</span> <span class="p">-</span><span class="n">-version</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">laravel</span> <span class="p">-</span><span class="n">-version</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">node</span> <span class="p">-</span><span class="n">-version</span>
+</code></pre></div>
+<p>Kalau <code>laravel --version</code> menampilkan versi lama, update aplikasi Herd. Installer <code>laravel</code> yang dipakai berasal dari Herd, bukan dari <code>composer global</code>.</p>
+<h3 id="13-masuk-ke-folder-parked">1.3 Masuk ke folder parked<a class="headerlink" href="#13-masuk-ke-folder-parked" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd </span><span class="nv">$HOME</span><span class="p">\</span><span class="n">Herd</span>
+</code></pre></div>
+Folder <code>C:\Users\NamaKamu\Herd</code> adalah folder <em>parked</em>. Project apa pun di dalamnya otomatis dilayani Herd lewat alamat <code>namafolder.test</code>.</p>
+<h3 id="14-buat-project">1.4 Buat project<a class="headerlink" href="#14-buat-project" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">laravel</span> <span class="n">new</span> <span class="n">my-app</span>
+</code></pre></div>
+Installer menanyakan beberapa pilihan:
+- <strong>Starter kit</strong>: pilih <em>None</em> untuk mulai dari nol, atau React, Vue, Livewire kalau butuh login dan dashboard bawaan.
+- <strong>Testing framework</strong>: Pest atau PHPUnit.
+- <strong>Database</strong>: SQLite (default, tanpa server), MySQL, MariaDB, PostgreSQL, atau SQL Server.</p>
+<p>Pertanyaan bisa dilewati dengan flag:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">laravel</span> <span class="n">new</span> <span class="n">my-app</span> <span class="p">-</span><span class="n">-pest</span> <span class="p">-</span><span class="n">-database</span><span class="p">=</span><span class="n">mysql</span> <span class="p">-</span><span class="n">-git</span> <span class="p">-</span><span class="n">-npm</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">laravel</span> <span class="n">new</span> <span class="n">my-app</span> <span class="p">-</span><span class="n">-no-interaction</span>
+</code></pre></div></p>
+<h3 id="15-jalankan-dan-buka">1.5 Jalankan dan buka<a class="headerlink" href="#15-jalankan-dan-buka" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd </span><span class="n">my-app</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">herd</span> <span class="n">open</span>                    <span class="c"># membuka http://my-app.test</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">npm</span> <span class="n">install</span><span class="p">;</span> <span class="n">npm</span> <span class="n">run</span> <span class="n">build</span>   <span class="c"># di PowerShell 5.1 pakai titik koma, bukan &amp;&amp;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">composer</span> <span class="n">run</span> <span class="n">dev</span>             <span class="c"># server + queue + log + Vite sekaligus</span>
+</code></pre></div>
+<h3 id="16-database-dan-https">1.6 Database dan HTTPS<a class="headerlink" href="#16-database-dan-https" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">php</span> <span class="n">artisan</span> <span class="n">migrate</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">herd</span> <span class="n">secure</span>                  <span class="c"># https://my-app.test</span>
+</code></pre></div>
+<h2 id="2-command-herd">2. Command Herd<a class="headerlink" href="#2-command-herd" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Fungsi</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>herd open</code></td>
+<td>Membuka site dari folder saat ini di browser. Herd mencocokkan nama folder dengan domain <code>.test</code>.</td>
+<td><code>herd open</code></td>
+</tr>
+<tr>
+<td><code>herd secure</code></td>
+<td>Membuat sertifikat SSL lokal supaya site bisa diakses lewat <code>https://</code>. Berguna kalau fitur seperti OAuth atau cookie aman butuh HTTPS.</td>
+<td><code>herd secure</code></td>
+</tr>
+<tr>
+<td><code>herd unsecure</code></td>
+<td>Mengembalikan site ke <code>http://</code>.</td>
+<td><code>herd unsecure</code></td>
+</tr>
+<tr>
+<td><code>herd park</code></td>
+<td>Mendaftarkan folder sebagai folder parked, sehingga semua project di dalamnya otomatis punya domain <code>.test</code>. Jalankan di dalam folder yang dimaksud.</td>
+<td><code>herd park</code></td>
+</tr>
+<tr>
+<td><code>herd forget</code></td>
+<td>Menghapus folder dari daftar parked.</td>
+<td><code>herd forget</code></td>
+</tr>
+<tr>
+<td><code>herd link</code></td>
+<td>Melayani satu folder dengan nama domain pilihan, cocok untuk project di luar folder parked.</td>
+<td><code>herd link toko</code> lalu buka <code>toko.test</code></td>
+</tr>
+<tr>
+<td><code>herd unlink</code></td>
+<td>Menghapus link yang dibuat <code>herd link</code>.</td>
+<td><code>herd unlink toko</code></td>
+</tr>
+<tr>
+<td><code>herd isolate</code></td>
+<td>Mengunci satu project ke versi PHP tertentu, sementara project lain tetap memakai versi global.</td>
+<td><code>herd isolate 8.4</code></td>
+</tr>
+<tr>
+<td><code>herd use</code></td>
+<td>Mengganti versi PHP global untuk semua project yang tidak di-isolate.</td>
+<td><code>herd use 8.3</code></td>
+</tr>
+<tr>
+<td><code>herd php</code></td>
+<td>Menjalankan PHP dengan versi yang dipakai project saat ini.</td>
+<td><code>herd php -v</code></td>
+</tr>
+<tr>
+<td><code>herd composer</code></td>
+<td>Menjalankan Composer dengan PHP yang dipakai project saat ini.</td>
+<td><code>herd composer install</code></td>
+</tr>
+<tr>
+<td><code>herd restart</code></td>
+<td>Merestart layanan Herd kalau site tiba-tiba tidak bisa dibuka.</td>
+<td><code>herd restart</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-command-artisan">3. Command Artisan<a class="headerlink" href="#3-command-artisan" title="Permanent link">&para;</a></h2>
+<p>Artisan adalah alat command line bawaan Laravel. Semuanya dijalankan dari dalam folder project dengan awalan <code>php artisan</code>.</p>
+<h3 id="31-info-dan-bantuan">3.1 Info dan bantuan<a class="headerlink" href="#31-info-dan-bantuan" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td>Menampilkan semua command yang tersedia. Titik awal yang bagus kalau lupa nama command.</td>
+<td><code>php artisan list</code></td>
+</tr>
+<tr>
+<td><code>help</code></td>
+<td>Menampilkan penjelasan lengkap satu command, termasuk semua opsi (flag) yang bisa dipakai.</td>
+<td><code>php artisan help make:model</code></td>
+</tr>
+<tr>
+<td><code>about</code></td>
+<td>Ringkasan project: versi Laravel, versi PHP, driver cache, database, dan status environment. Berguna saat debugging atau minta bantuan orang lain.</td>
+<td><code>php artisan about</code></td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Menampilkan environment yang sedang aktif (<code>local</code>, <code>production</code>, dst.).</td>
+<td><code>php artisan env</code></td>
+</tr>
+<tr>
+<td><code>tinker</code></td>
+<td>Console interaktif untuk mencoba kode PHP dengan konteks aplikasi kamu, tanpa harus membuat halaman atau route. Ketik <code>exit</code> untuk keluar.</td>
+<td><code>php artisan tinker</code> lalu <code>User::count()</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-generator-make">3.2 Generator (<code>make:*</code>)<a class="headerlink" href="#32-generator-make" title="Permanent link">&para;</a></h3>
+<p>Command <code>make:*</code> membuat file kerangka (boilerplate) di folder yang benar, jadi kamu tidak perlu membuat file dan menulis namespace-nya manual.</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>make:model</code></td>
+<td>Membuat <em>model</em>, yaitu class yang mewakili satu tabel database (misalnya <code>Product</code> untuk tabel <code>products</code>). Bisa sekaligus membuat file pendukung lewat flag (lihat 3.3).</td>
+<td><code>php artisan make:model Product -mfsc</code></td>
+</tr>
+<tr>
+<td><code>make:controller</code></td>
+<td>Membuat <em>controller</em>, tempat logika yang menerima request dan mengembalikan response. Flag <code>--resource</code> menyiapkan method standar (index, store, show, update, destroy).</td>
+<td><code>php artisan make:controller ProductController --resource</code></td>
+</tr>
+<tr>
+<td><code>make:migration</code></td>
+<td>Membuat <em>migration</em>, yaitu file yang menuliskan perubahan struktur database (buat tabel, tambah kolom) dalam bentuk kode. Ini seperti "riwayat versi" skema database.</td>
+<td><code>php artisan make:migration create_orders_table</code></td>
+</tr>
+<tr>
+<td><code>make:seeder</code></td>
+<td>Membuat <em>seeder</em>, yaitu class untuk mengisi data awal ke database (misalnya akun admin).</td>
+<td><code>php artisan make:seeder AdminSeeder</code></td>
+</tr>
+<tr>
+<td><code>make:factory</code></td>
+<td>Membuat <em>factory</em>, yaitu pembuat data palsu (dummy) untuk testing atau development.</td>
+<td><code>php artisan make:factory ProductFactory</code></td>
+</tr>
+<tr>
+<td><code>make:request</code></td>
+<td>Membuat <em>form request</em>, yaitu class khusus untuk aturan validasi input, supaya controller tetap ringkas.</td>
+<td><code>php artisan make:request StoreProductRequest</code></td>
+</tr>
+<tr>
+<td><code>make:middleware</code></td>
+<td>Membuat <em>middleware</em>, yaitu "penjaga gerbang" yang memeriksa request sebelum sampai ke controller (misalnya cek apakah user adalah admin).</td>
+<td><code>php artisan make:middleware CekAdmin</code></td>
+</tr>
+<tr>
+<td><code>make:policy</code></td>
+<td>Membuat <em>policy</em>, yaitu aturan siapa yang boleh melakukan apa terhadap suatu model (misalnya hanya pemilik yang boleh edit).</td>
+<td><code>php artisan make:policy ProductPolicy --model=Product</code></td>
+</tr>
+<tr>
+<td><code>make:resource</code></td>
+<td>Membuat <em>API resource</em>, yang mengatur bentuk JSON yang dikirim ke pengguna API.</td>
+<td><code>php artisan make:resource ProductResource</code></td>
+</tr>
+<tr>
+<td><code>make:job</code></td>
+<td>Membuat <em>job</em>, yaitu tugas berat yang dijalankan di latar belakang lewat queue (misalnya mengirim email massal).</td>
+<td><code>php artisan make:job KirimEmailNota</code></td>
+</tr>
+<tr>
+<td><code>make:event</code> dan <code>make:listener</code></td>
+<td>Event menandai sesuatu telah terjadi (pesanan dibuat), listener adalah reaksi terhadapnya (kirim notifikasi).</td>
+<td><code>php artisan make:event OrderDibuat</code></td>
+</tr>
+<tr>
+<td><code>make:mail</code></td>
+<td>Membuat class email beserta template-nya.</td>
+<td><code>php artisan make:mail InvoiceMail</code></td>
+</tr>
+<tr>
+<td><code>make:notification</code></td>
+<td>Membuat notifikasi yang bisa dikirim lewat email, database, atau kanal lain.</td>
+<td><code>php artisan make:notification PesananSelesai</code></td>
+</tr>
+<tr>
+<td><code>make:command</code></td>
+<td>Membuat command Artisan buatan sendiri, misalnya untuk tugas rutin.</td>
+<td><code>php artisan make:command HitungStok</code></td>
+</tr>
+<tr>
+<td><code>make:test</code></td>
+<td>Membuat file test otomatis. Tambah <code>--pest</code> untuk gaya Pest.</td>
+<td><code>php artisan make:test ProductTest --pest</code></td>
+</tr>
+<tr>
+<td><code>make:component</code></td>
+<td>Membuat <em>Blade component</em>, potongan tampilan yang bisa dipakai ulang.</td>
+<td><code>php artisan make:component Alert</code></td>
+</tr>
+<tr>
+<td><code>make:enum</code></td>
+<td>Membuat enum, yaitu daftar nilai tetap (misalnya status: pending, paid, cancelled).</td>
+<td><code>php artisan make:enum OrderStatus</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-flag-singkat-pada-makemodel">3.3 Flag singkat pada <code>make:model</code><a class="headerlink" href="#33-flag-singkat-pada-makemodel" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Artinya</th>
+<th>Hasil tambahan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m</code></td>
+<td>migration</td>
+<td>file migrasi tabelnya</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>factory</td>
+<td>data dummy</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>seeder</td>
+<td>pengisi data awal</td>
+</tr>
+<tr>
+<td><code>-c</code></td>
+<td>controller</td>
+<td>controller kosong</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>resource</td>
+<td>controller dengan method lengkap</td>
+</tr>
+<tr>
+<td><code>-a</code></td>
+<td>all</td>
+<td>semua file pendukung sekaligus</td>
+</tr>
+</tbody>
+</table>
+<p>Contoh: <code>php artisan make:model Product -mfs</code> membuat model, migrasi, factory, dan seeder dalam satu perintah.</p>
+<h3 id="34-database">3.4 Database<a class="headerlink" href="#34-database" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>migrate</code></td>
+<td>Menjalankan semua migrasi yang belum pernah dijalankan, sehingga tabel dibuat atau diubah.</td>
+<td><code>php artisan migrate</code></td>
+</tr>
+<tr>
+<td><code>migrate:status</code></td>
+<td>Melihat migrasi mana yang sudah dan belum dijalankan.</td>
+<td><code>php artisan migrate:status</code></td>
+</tr>
+<tr>
+<td><code>migrate:rollback</code></td>
+<td>Membatalkan migrasi batch terakhir. <code>--step=1</code> membatalkan satu langkah saja.</td>
+<td><code>php artisan migrate:rollback --step=1</code></td>
+</tr>
+<tr>
+<td><code>migrate:fresh</code></td>
+<td><strong>Menghapus semua tabel</strong>, lalu menjalankan semua migrasi dari awal. Tambah <code>--seed</code> untuk sekaligus mengisi data awal.</td>
+<td><code>php artisan migrate:fresh --seed</code></td>
+</tr>
+<tr>
+<td><code>migrate:refresh</code></td>
+<td>Membatalkan semua migrasi lalu menjalankannya lagi. Hasil akhirnya mirip <code>fresh</code>, tetapi lewat proses rollback.</td>
+<td><code>php artisan migrate:refresh</code></td>
+</tr>
+<tr>
+<td><code>db:seed</code></td>
+<td>Menjalankan seeder untuk mengisi data awal.</td>
+<td><code>php artisan db:seed --class=AdminSeeder</code></td>
+</tr>
+<tr>
+<td><code>db:show</code> dan <code>db:table</code></td>
+<td>Melihat ringkasan database atau struktur satu tabel, tanpa aplikasi database terpisah.</td>
+<td><code>php artisan db:table users</code></td>
+</tr>
+<tr>
+<td><code>model:show</code></td>
+<td>Menampilkan atribut dan relasi sebuah model.</td>
+<td><code>php artisan model:show Product</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Perhatian</p>
+<p><code>migrate:fresh</code> dan <code>migrate:refresh</code> <strong>menghapus data</strong>. Pakai hanya di development, jangan di production.</p>
+</div>
+<h3 id="35-route-cache-dan-optimasi">3.5 Route, cache, dan optimasi<a class="headerlink" href="#35-route-cache-dan-optimasi" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>route:list</code></td>
+<td>Menampilkan semua route (URL, method, nama, controller). Pakai <code>--path</code> untuk memfilter.</td>
+<td><code>php artisan route:list --path=api</code></td>
+</tr>
+<tr>
+<td><code>optimize</code></td>
+<td>Menyimpan cache config, route, event, dan view supaya aplikasi lebih cepat. Umumnya dipakai di production.</td>
+<td><code>php artisan optimize</code></td>
+</tr>
+<tr>
+<td><code>optimize:clear</code></td>
+<td>Menghapus semua cache di atas. Jalankan saat perubahan kamu tidak muncul.</td>
+<td><code>php artisan optimize:clear</code></td>
+</tr>
+<tr>
+<td><code>config:clear</code></td>
+<td>Menghapus cache konfigurasi. Berguna setelah mengubah <code>.env</code> dan hasilnya tidak berubah.</td>
+<td><code>php artisan config:clear</code></td>
+</tr>
+<tr>
+<td><code>route:clear</code></td>
+<td>Menghapus cache route.</td>
+<td><code>php artisan route:clear</code></td>
+</tr>
+<tr>
+<td><code>view:clear</code></td>
+<td>Menghapus cache tampilan Blade.</td>
+<td><code>php artisan view:clear</code></td>
+</tr>
+<tr>
+<td><code>cache:clear</code></td>
+<td>Menghapus data cache aplikasi (bukan cache config atau route).</td>
+<td><code>php artisan cache:clear</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="36-queue-jadwal-dan-lainnya">3.6 Queue, jadwal, dan lainnya<a class="headerlink" href="#36-queue-jadwal-dan-lainnya" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Penjelasan</th>
+<th>Contoh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queue:work</code></td>
+<td>Menjalankan <em>worker</em> yang mengambil job dari antrean dan memprosesnya di latar belakang. <code>--tries=3</code> artinya dicoba maksimal 3 kali.</td>
+<td><code>php artisan queue:work --tries=3</code></td>
+</tr>
+<tr>
+<td><code>queue:listen</code></td>
+<td>Mirip <code>queue:work</code>, tetapi otomatis memuat ulang kode. Nyaman untuk development, tapi lebih lambat.</td>
+<td><code>php artisan queue:listen</code></td>
+</tr>
+<tr>
+<td><code>queue:failed</code> dan <code>queue:retry</code></td>
+<td>Melihat job yang gagal, lalu mengulanginya.</td>
+<td><code>php artisan queue:retry all</code></td>
+</tr>
+<tr>
+<td><code>schedule:list</code></td>
+<td>Menampilkan tugas terjadwal beserta jadwal berikutnya.</td>
+<td><code>php artisan schedule:list</code></td>
+</tr>
+<tr>
+<td><code>schedule:work</code></td>
+<td>Menjalankan scheduler di lokal, sehingga tidak perlu cron.</td>
+<td><code>php artisan schedule:work</code></td>
+</tr>
+<tr>
+<td><code>key:generate</code></td>
+<td>Membuat <code>APP_KEY</code> di <code>.env</code>, kunci untuk enkripsi dan sesi. Wajib ada agar aplikasi berjalan.</td>
+<td><code>php artisan key:generate</code></td>
+</tr>
+<tr>
+<td><code>storage:link</code></td>
+<td>Membuat symlink <code>public/storage</code> ke <code>storage/app/public</code>, agar file upload bisa diakses dari browser.</td>
+<td><code>php artisan storage:link</code></td>
+</tr>
+<tr>
+<td><code>vendor:publish</code></td>
+<td>Menyalin file config atau asset dari sebuah package ke project kamu supaya bisa diedit.</td>
+<td><code>php artisan vendor:publish</code></td>
+</tr>
+<tr>
+<td><code>install:api</code></td>
+<td>Menyiapkan fitur API (Sanctum, route <code>api.php</code>).</td>
+<td><code>php artisan install:api</code></td>
+</tr>
+<tr>
+<td><code>install:broadcasting</code></td>
+<td>Menyiapkan fitur real-time (Reverb dan channel).</td>
+<td><code>php artisan install:broadcasting</code></td>
+</tr>
+<tr>
+<td><code>down</code> dan <code>up</code></td>
+<td>Mengaktifkan atau mematikan mode maintenance. <code>--secret</code> memberi kamu jalur akses saat maintenance.</td>
+<td><code>php artisan down --secret=rahasia</code></td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td>Menjalankan semua test dengan tampilan hasil yang rapi. <code>--filter</code> menjalankan sebagian saja.</td>
+<td><code>php artisan test --filter=ProductTest</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-shortcut">4. Shortcut<a class="headerlink" href="#4-shortcut" title="Permanent link">&para;</a></h2>
+<p>Shortcut hanya tambahan. <code>php artisan</code> tetap bisa dipakai seperti biasa.</p>
+<h3 id="41-alias-a-untuk-php-artisan-powershell">4.1 Alias <code>a</code> untuk <code>php artisan</code> (PowerShell)<a class="headerlink" href="#41-alias-a-untuk-php-artisan-powershell" title="Permanent link">&para;</a></h3>
+<p>Buat file profile kalau belum ada, lalu buka:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="nv">$PROFILE</span><span class="p">))</span> <span class="p">{</span> <span class="nb">New-Item</span> <span class="n">-Type</span> <span class="n">File</span> <span class="n">-Path</span> <span class="nv">$PROFILE</span> <span class="n">-Force</span> <span class="p">}</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">notepad</span> <span class="nv">$PROFILE</span>
+</code></pre></div>
+Tambahkan:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">function</span> <span class="n">a</span> <span class="p">{</span> <span class="n">php</span> <span class="n">artisan</span> <span class="nv">@args</span> <span class="p">}</span>
+</code></pre></div>
+Simpan, lalu buka PowerShell baru. Kalau muncul error soal <em>execution policy</em>, jalankan sekali:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">Set-ExecutionPolicy</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span> <span class="n">RemoteSigned</span>
+</code></pre></div>
+Contoh pemakaian: <code>a migrate</code>, <code>a make:model Post -a</code>.</p>
+<h3 id="42-shortcut-lain">4.2 Shortcut lain<a class="headerlink" href="#42-shortcut-lain" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Setara dengan</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>composer setup</code></td>
+<td>install dependency, salin <code>.env</code>, <code>key:generate</code>, <code>migrate</code>, build asset</td>
+<td>Menyiapkan project yang baru di-clone dalam satu langkah</td>
+</tr>
+<tr>
+<td><code>composer dev</code></td>
+<td>server + queue + log + Vite</td>
+<td>Menjalankan semua kebutuhan development sekaligus</td>
+</tr>
+<tr>
+<td><code>composer test</code></td>
+<td>menjalankan test</td>
+<td>Cara singkat menjalankan test</td>
+</tr>
+<tr>
+<td><code>make:model X -a</code></td>
+<td>model + migrasi + factory + seeder + policy + controller + request</td>
+<td>Membuat semua file pendukung sekaligus</td>
+</tr>
+<tr>
+<td><code>migrate:fresh --seed</code></td>
+<td>reset semua tabel + isi data awal</td>
+<td>Mengulang database dari nol saat development</td>
+</tr>
+<tr>
+<td><code>optimize:clear</code></td>
+<td><code>config:clear</code>, <code>route:clear</code>, <code>view:clear</code>, dst.</td>
+<td>Membersihkan semua cache sekaligus</td>
+</tr>
+</tbody>
+</table>
+<p>Nama script Composer di atas bisa dicek di bagian <code>scripts</code> pada <code>composer.json</code> project.</p>
+<h2 id="5-langkah-berikutnya">5. Langkah berikutnya<a class="headerlink" href="#5-langkah-berikutnya" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Buat dan jelajahi halaman beranda/dashboard: <a href="../halaman-beranda/">Halaman Beranda</a></li>
+<li>Pelajari dasar-dasarnya: <a href="../env/">File <code>.env</code></a>, <a href="../composer/">Composer</a>, dan <a href="../npm/">npm dan npx</a>.</li>
+<li>Praktik langsung: <a href="../aplikasi-ujicoba-crud/">Aplikasi Uji Coba: CRUD Data Buku</a>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Kembali ke atas
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Sebelumnya: Beranda">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sebelumnya
+              </span>
+              <div class="md-ellipsis">
+                Beranda
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../macos/" class="md-footer__link md-footer__link--next" aria-label="Selanjutnya: macOS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Selanjutnya
+              </span>
+              <div class="md-ellipsis">
+                macOS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Tersalin ke clipboard", "clipboard.copy": "Salin ke clipboard", "search.result.more.one": "1 lagi di halaman ini", "search.result.more.other": "# lagi di halaman ini", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.term.missing": "Tidak ada", "select.version": "Pilih versi"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

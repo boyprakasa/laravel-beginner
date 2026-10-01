@@ -1,0 +1,1974 @@
+
+<!doctype html>
+<html lang="id" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Panduan instalasi Laravel, Herd, dan Artisan dari nol untuk pemula">
+      
+      
+      
+      
+        <link rel="prev" href="../halaman-beranda/">
+      
+      
+        <link rel="next" href="../crud-relasi/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>CRUD Data Buku - Laravel untuk Pemula</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aplikasi-ujicoba-crud-data-buku" class="md-skip">
+          Lewati ke isi
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Laravel untuk Pemula" class="md-header__button md-logo" aria-label="Laravel untuk Pemula" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Laravel untuk Pemula
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CRUD Data Buku
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Ganti ke mode gelap"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Ganti ke mode gelap" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Ganti ke mode terang"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Ganti ke mode terang" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cari" placeholder="Cari" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cari">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Kosongkan" aria-label="Kosongkan" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Mempersiapkan pencarian
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigasi" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Laravel untuk Pemula" class="md-nav__button md-logo" aria-label="Laravel untuk Pemula" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Laravel untuk Pemula
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Beranda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instalasi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instalasi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../macos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dasar-dasar
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dasar-dasar
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../env/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    File .env
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../composer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Composer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../npm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    npm dan npx
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../halaman-beranda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Halaman Beranda
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aplikasi Uji Coba
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Aplikasi Uji Coba
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD Data Buku
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD Data Buku
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-buat-project-baru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Buat Project Baru
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-migration-membuat-tabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Migration: Membuat Tabel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-factory-dan-seeder-data-contoh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Factory dan Seeder (Data Contoh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-validasi-dengan-form-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Validasi dengan Form Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Route
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tampilan-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Tampilan (Blade)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Tampilan (Blade)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-layout-resourcesviewslayoutsappbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Layout: resources/views/layouts/app.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-form-bersama-resourcesviewsbook_formbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Form bersama: resources/views/book/_form.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-tambah-resourcesviewsbookcreatebladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Tambah: resources/views/book/create.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-edit-resourcesviewsbookeditbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Edit: resources/views/book/edit.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-detail-resourcesviewsbookshowbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Detail: resources/views/book/show.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-jalankan-dan-coba-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Jalankan dan Coba Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-feature-test-otomatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Feature Test Otomatis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-ringkasan-command-yang-dipakai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Ringkasan Command yang Dipakai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tantangan-lanjutan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Tantangan Lanjutan
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crud-relasi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD dengan Relasi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crud-many-to-many/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CRUD dengan Relasi Many-to-Many
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Komponen Blade
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Komponen Blade
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../komponen-navigasi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Navigasi Menu
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Daftar isi">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Daftar isi
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-buat-project-baru" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Buat Project Baru
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-migration-membuat-tabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Migration: Membuat Tabel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-factory-dan-seeder-data-contoh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Factory dan Seeder (Data Contoh)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-validasi-dengan-form-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Validasi dengan Form Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Controller
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-route" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Route
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tampilan-blade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Tampilan (Blade)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Tampilan (Blade)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-layout-resourcesviewslayoutsappbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Layout: resources/views/layouts/app.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-form-bersama-resourcesviewsbook_formbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Form bersama: resources/views/book/_form.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-tambah-resourcesviewsbookcreatebladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Tambah: resources/views/book/create.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-edit-resourcesviewsbookeditbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Edit: resources/views/book/edit.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-detail-resourcesviewsbookshowbladephp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Detail: resources/views/book/show.blade.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-jalankan-dan-coba-manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Jalankan dan Coba Manual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-feature-test-otomatis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Feature Test Otomatis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-ringkasan-command-yang-dipakai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Ringkasan Command yang Dipakai
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-tantangan-lanjutan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Tantangan Lanjutan
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aplikasi-ujicoba-crud-data-buku">Aplikasi Ujicoba: CRUD Data Buku<a class="headerlink" href="#aplikasi-ujicoba-crud-data-buku" title="Permanent link">&para;</a></h1>
+<p>Panduan ini membuat aplikasi kecil <strong>Perpustakaan Mini</strong> untuk mempraktikkan empat operasi dasar database:</p>
+<table>
+<thead>
+<tr>
+<th>Huruf</th>
+<th>Operasi</th>
+<th>Route</th>
+<th>Method controller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C</strong></td>
+<td>Create (tambah data)</td>
+<td><code>GET /book/create</code>, <code>POST /book</code></td>
+<td><code>create</code>, <code>store</code></td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>Read (lihat data)</td>
+<td><code>GET /book</code>, <code>GET /book/{id}</code></td>
+<td><code>index</code>, <code>show</code></td>
+</tr>
+<tr>
+<td><strong>U</strong></td>
+<td>Update (ubah data)</td>
+<td><code>GET /book/{id}/edit</code>, <code>PUT /book/{id}</code></td>
+<td><code>edit</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Delete (hapus data)</td>
+<td><code>DELETE /book/{id}</code></td>
+<td><code>destroy</code></td>
+</tr>
+</tbody>
+</table>
+<p>Yang dipelajari: migration, model, factory, resource controller, validasi, Blade, flash message, pagination, pencarian, dan feature test.</p>
+<div class="admonition note">
+<p class="admonition-title">Prasyarat</p>
+<p>Laravel dan PHP sudah terpasang (lihat panduan instalasi: <a href="../windows/">Windows</a>, <a href="../macos/">macOS</a>, atau <a href="../linux/">Linux</a>).
+Database memakai <strong>SQLite</strong> bawaan Laravel, jadi tidak perlu install MySQL.
+Disarankan membaca dulu dasar-dasarnya: <a href="../env/">File <code>.env</code></a>, <a href="../composer/">Composer</a>, dan <a href="../npm/">npm dan npx</a>.</p>
+</div>
+<hr />
+<h2 id="1-buat-project-baru">1. Buat Project Baru<a class="headerlink" href="#1-buat-project-baru" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>laravel<span class="w"> </span>new<span class="w"> </span>ujicoba-crud
+</code></pre></div>
+<p>Saat installer bertanya, pilih:</p>
+<ul>
+<li>Starter kit: <strong>None</strong></li>
+<li>Testing framework: <strong>Pest</strong></li>
+<li>Database: <strong>SQLite</strong></li>
+</ul>
+<p>Masuk ke folder project:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>ujicoba-crud
+</code></pre></div>
+<p>Jika memakai Herd, folder project yang berada di direktori Herd otomatis tersedia di <code>http://ujicoba-crud.test</code>. Di Linux dengan Valet, letakkan project di folder yang sudah di-<em>park</em> (lihat <a href="../linux/">panduan Linux</a>). Tanpa keduanya, jalankan <code>php artisan serve</code>.</p>
+<p>Penjelasan pilihan installer dan flag <code>laravel new</code> ada di bagian <em>Buat project</em> pada panduan instalasi: <a href="../windows/#14-buat-project">Windows</a>, <a href="../macos/#14-buat-project">macOS</a>, atau <a href="../linux/#111-buat-project">Linux</a>.</p>
+<hr />
+<h2 id="2-migration-membuat-tabel">2. Migration: Membuat Tabel<a class="headerlink" href="#2-migration-membuat-tabel" title="Permanent link">&para;</a></h2>
+<p>Buat model beserta migration dan factory sekaligus:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:model<span class="w"> </span>Book<span class="w"> </span>-mf
+</code></pre></div>
+<p>Buka file <code>database/migrations/xxxx_xx_xx_xxxxxx_create_books_table.php</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="x">public function up(): void</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="x">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="x">    Schema::create('books', function (Blueprint $table) {</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="x">        $table-&gt;id();</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="x">        $table-&gt;string('title');</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="x">        $table-&gt;string('writer');</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="x">        $table-&gt;unsignedSmallInteger('publication_year');</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="x">        $table-&gt;text('description')-&gt;nullable();</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="x">        $table-&gt;timestamps();</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="x">    });</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="x">}</span>
+</code></pre></div>
+<p>Jalankan migration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>migrate
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Referensi command</p>
+<p>Penjelasan <code>make:model</code>, <code>migrate</code>, dan command Artisan lainnya ada di bagian <em>Command Artisan</em> pada panduan instalasi: <a href="../windows/#3-command-artisan">Windows</a>, <a href="../macos/#3-command-artisan">macOS</a>, atau <a href="../linux/#3-command-artisan">Linux</a>.</p>
+</div>
+<hr />
+<h2 id="3-model">3. Model<a class="headerlink" href="#3-model" title="Permanent link">&para;</a></h2>
+<p><code>app/Models/Book.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">namespace</span> <span class="nx">App\Models</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\HasFactory</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Model</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="k">class</span> <span class="nc">Book</span> <span class="k">extends</span> <span class="nx">Model</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">{</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="k">use</span> <span class="nx">HasFactory</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="k">protected</span> <span class="nv">$fillable</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="s1">'title'</span><span class="p">,</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="s1">'writer'</span><span class="p">,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>        <span class="s1">'publication_year'</span><span class="p">,</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="s1">'description'</span><span class="p">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="p">];</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Kenapa <code>$fillable</code>?</p>
+<p>Daftar ini menentukan kolom mana yang boleh diisi lewat <code>Book::create([...])</code>. Ini melindungi dari <em>mass assignment</em>, yaitu pengguna mengirim kolom yang seharusnya tidak boleh diubah.</p>
+</div>
+<hr />
+<h2 id="4-factory-dan-seeder-data-contoh">4. Factory dan Seeder (Data Contoh)<a class="headerlink" href="#4-factory-dan-seeder-data-contoh" title="Permanent link">&para;</a></h2>
+<p><code>database/factories/BookFactory.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="x">public function definition(): array</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="x">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="x">    return [</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="x">        'title' =&gt; fake()-&gt;sentence(3),</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="x">        'writer' =&gt; fake()-&gt;name(),</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="x">        'publication_year' =&gt; fake()-&gt;numberBetween(1990, 2025),</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="x">        'description' =&gt; fake()-&gt;paragraph(),</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="x">    ];</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="x">}</span>
+</code></pre></div>
+<p><code>database/seeders/DatabaseSeeder.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="x">use App\Models\Book;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="x">public function run(): void</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="x">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="x">    Book::factory(25)-&gt;create();</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="x">}</span>
+</code></pre></div>
+<p>Isi data contoh:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>db:seed
+</code></pre></div>
+<hr />
+<h2 id="5-validasi-dengan-form-request">5. Validasi dengan Form Request<a class="headerlink" href="#5-validasi-dengan-form-request" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:request<span class="w"> </span>BookRequest
+</code></pre></div>
+<p><code>app/Http/Requests/BookRequest.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="x">public function authorize(): bool</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="x">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="x">    return true;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="x">}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="x">public function rules(): array</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="x">{</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="x">    return [</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="x">        'title' =&gt; ['required', 'string', 'max:255'],</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="x">        'writer' =&gt; ['required', 'string', 'max:255'],</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="x">        'publication_year' =&gt; ['required', 'integer', 'between:1000,' . date('Y')],</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="x">        'description' =&gt; ['nullable', 'string'],</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="x">    ];</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="x">}</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="x">public function messages(): array</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="x">{</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="x">    return [</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="x">        'title.required' =&gt; 'Judul wajib diisi.',</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="x">        'writer.required' =&gt; 'Penulis wajib diisi.',</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="x">        'publication_year.required' =&gt; 'Tahun terbit wajib diisi.',</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="x">        'publication_year.integer' =&gt; 'Tahun terbit harus berupa angka.',</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="x">    ];</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="x">}</span>
+</code></pre></div>
+<hr />
+<h2 id="6-controller">6. Controller<a class="headerlink" href="#6-controller" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:controller<span class="w"> </span>BookController<span class="w"> </span>--resource<span class="w"> </span>--model<span class="o">=</span>Book
+</code></pre></div>
+<p><code>app/Http/Controllers/BookController.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="k">namespace</span> <span class="nx">App\Http\Controllers</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="k">use</span> <span class="nx">App\Http\Requests\BookRequest</span><span class="p">;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="k">use</span> <span class="nx">App\Models\Book</span><span class="p">;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="k">use</span> <span class="nx">Illuminate\Http\Request</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="k">class</span> <span class="nc">BookController</span> <span class="k">extends</span> <span class="nx">Controller</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">{</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="c1">// READ (daftar)</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="p">{</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>        <span class="nv">$book</span> <span class="o">=</span> <span class="nx">Book</span><span class="o">::</span><span class="na">query</span><span class="p">()</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>            <span class="o">-&gt;</span><span class="na">when</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">q</span><span class="p">,</span> <span class="k">function</span> <span class="p">(</span><span class="nv">$query</span><span class="p">,</span> <span class="nv">$q</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>                <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'like'</span><span class="p">,</span> <span class="s2">"%</span><span class="si">{</span><span class="nv">$q</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>                      <span class="o">-&gt;</span><span class="na">orWhere</span><span class="p">(</span><span class="s1">'writer'</span><span class="p">,</span> <span class="s1">'like'</span><span class="p">,</span> <span class="s2">"%</span><span class="si">{</span><span class="nv">$q</span><span class="si">}</span><span class="s2">%"</span><span class="p">);</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>            <span class="p">})</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>            <span class="o">-&gt;</span><span class="na">latest</span><span class="p">()</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>            <span class="o">-&gt;</span><span class="na">paginate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>            <span class="o">-&gt;</span><span class="na">withQueryString</span><span class="p">();</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">,</span> <span class="nb">compact</span><span class="p">(</span><span class="s1">'book'</span><span class="p">));</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>    <span class="p">}</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>    <span class="c1">// CREATE (form)</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">()</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    <span class="p">{</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">'book.create'</span><span class="p">);</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>    <span class="p">}</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>    <span class="c1">// CREATE (simpan)</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">store</span><span class="p">(</span><span class="nx">BookRequest</span> <span class="nv">$request</span><span class="p">)</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>    <span class="p">{</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>        <span class="nx">Book</span><span class="o">::</span><span class="na">create</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">());</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>
+<a id="__codelineno-12-37" name="__codelineno-12-37" href="#__codelineno-12-37"></a>        <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">)</span>
+<a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a>            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Buku berhasil ditambahkan.'</span><span class="p">);</span>
+<a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a>    <span class="p">}</span>
+<a id="__codelineno-12-40" name="__codelineno-12-40" href="#__codelineno-12-40"></a>
+<a id="__codelineno-12-41" name="__codelineno-12-41" href="#__codelineno-12-41"></a>    <span class="c1">// READ (detail)</span>
+<a id="__codelineno-12-42" name="__codelineno-12-42" href="#__codelineno-12-42"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">Book</span> <span class="nv">$book</span><span class="p">)</span>
+<a id="__codelineno-12-43" name="__codelineno-12-43" href="#__codelineno-12-43"></a>    <span class="p">{</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44" href="#__codelineno-12-44"></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">'book.show'</span><span class="p">,</span> <span class="nb">compact</span><span class="p">(</span><span class="s1">'book'</span><span class="p">));</span>
+<a id="__codelineno-12-45" name="__codelineno-12-45" href="#__codelineno-12-45"></a>    <span class="p">}</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46" href="#__codelineno-12-46"></a>
+<a id="__codelineno-12-47" name="__codelineno-12-47" href="#__codelineno-12-47"></a>    <span class="c1">// UPDATE (form)</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48" href="#__codelineno-12-48"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">edit</span><span class="p">(</span><span class="nx">Book</span> <span class="nv">$book</span><span class="p">)</span>
+<a id="__codelineno-12-49" name="__codelineno-12-49" href="#__codelineno-12-49"></a>    <span class="p">{</span>
+<a id="__codelineno-12-50" name="__codelineno-12-50" href="#__codelineno-12-50"></a>        <span class="k">return</span> <span class="nx">view</span><span class="p">(</span><span class="s1">'book.edit'</span><span class="p">,</span> <span class="nb">compact</span><span class="p">(</span><span class="s1">'book'</span><span class="p">));</span>
+<a id="__codelineno-12-51" name="__codelineno-12-51" href="#__codelineno-12-51"></a>    <span class="p">}</span>
+<a id="__codelineno-12-52" name="__codelineno-12-52" href="#__codelineno-12-52"></a>
+<a id="__codelineno-12-53" name="__codelineno-12-53" href="#__codelineno-12-53"></a>    <span class="c1">// UPDATE (simpan)</span>
+<a id="__codelineno-12-54" name="__codelineno-12-54" href="#__codelineno-12-54"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">BookRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">Book</span> <span class="nv">$book</span><span class="p">)</span>
+<a id="__codelineno-12-55" name="__codelineno-12-55" href="#__codelineno-12-55"></a>    <span class="p">{</span>
+<a id="__codelineno-12-56" name="__codelineno-12-56" href="#__codelineno-12-56"></a>        <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$request</span><span class="o">-&gt;</span><span class="na">validated</span><span class="p">());</span>
+<a id="__codelineno-12-57" name="__codelineno-12-57" href="#__codelineno-12-57"></a>
+<a id="__codelineno-12-58" name="__codelineno-12-58" href="#__codelineno-12-58"></a>        <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">)</span>
+<a id="__codelineno-12-59" name="__codelineno-12-59" href="#__codelineno-12-59"></a>            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Buku berhasil diperbarui.'</span><span class="p">);</span>
+<a id="__codelineno-12-60" name="__codelineno-12-60" href="#__codelineno-12-60"></a>    <span class="p">}</span>
+<a id="__codelineno-12-61" name="__codelineno-12-61" href="#__codelineno-12-61"></a>
+<a id="__codelineno-12-62" name="__codelineno-12-62" href="#__codelineno-12-62"></a>    <span class="c1">// DELETE</span>
+<a id="__codelineno-12-63" name="__codelineno-12-63" href="#__codelineno-12-63"></a>    <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nx">Book</span> <span class="nv">$book</span><span class="p">)</span>
+<a id="__codelineno-12-64" name="__codelineno-12-64" href="#__codelineno-12-64"></a>    <span class="p">{</span>
+<a id="__codelineno-12-65" name="__codelineno-12-65" href="#__codelineno-12-65"></a>        <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+<a id="__codelineno-12-66" name="__codelineno-12-66" href="#__codelineno-12-66"></a>
+<a id="__codelineno-12-67" name="__codelineno-12-67" href="#__codelineno-12-67"></a>        <span class="k">return</span> <span class="nx">redirect</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">)</span>
+<a id="__codelineno-12-68" name="__codelineno-12-68" href="#__codelineno-12-68"></a>            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="s1">'success'</span><span class="p">,</span> <span class="s1">'Buku berhasil dihapus.'</span><span class="p">);</span>
+<a id="__codelineno-12-69" name="__codelineno-12-69" href="#__codelineno-12-69"></a>    <span class="p">}</span>
+<a id="__codelineno-12-70" name="__codelineno-12-70" href="#__codelineno-12-70"></a><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="7-route">7. Route<a class="headerlink" href="#7-route" title="Permanent link">&para;</a></h2>
+<p><code>routes/web.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="x">use App\Http\Controllers\BookController;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="x">use Illuminate\Support\Facades\Route;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="x">Route::get('/', fn () =&gt; redirect()-&gt;route('book.index'));</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="x">Route::resource('book', BookController::class);</span>
+</code></pre></div>
+<p>Satu baris <code>Route::resource</code> membuat 7 route sekaligus. Lihat daftarnya:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>route:list<span class="w"> </span>--name<span class="o">=</span>book
+</code></pre></div>
+<hr />
+<h2 id="8-tampilan-blade">8. Tampilan (Blade)<a class="headerlink" href="#8-tampilan-blade" title="Permanent link">&para;</a></h2>
+<p>Agar pagination tampil rapi dengan Bootstrap, tambahkan di <code>app/Providers/AppServiceProvider.php</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="x">use Illuminate\Pagination\Paginator;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="x">public function boot(): void</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="x">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="x">    Paginator::useBootstrapFive();</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="x">}</span>
+</code></pre></div>
+<p>Buat folder dan file view:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>resources/views/layouts<span class="w"> </span>resources/views/book
+</code></pre></div>
+<h3 id="81-layout-resourcesviewslayoutsappbladephp">8.1 Layout: <code>resources/views/layouts/app.blade.php</code><a class="headerlink" href="#81-layout-resourcesviewslayoutsappbladephp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>&lt;!DOCTYPE html&gt;
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>&lt;html lang="id"&gt;
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>&lt;head&gt;
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    &lt;meta charset="UTF-8"&gt;
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    &lt;title&gt;@yield('title', 'Perpustakaan Mini')&lt;/title&gt;
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>&lt;/head&gt;
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>&lt;body class="bg-light"&gt;
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    &lt;nav class="navbar navbar-dark bg-dark mb-4"&gt;
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        &lt;div class="container"&gt;
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>            &lt;a class="navbar-brand" href="{{ route('book.index') }}"&gt;📚 Perpustakaan Mini&lt;/a&gt;
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>        &lt;/div&gt;
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    &lt;/nav&gt;
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    &lt;main class="container"&gt;
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>        @if (session('success'))
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a>            &lt;div class="alert alert-success"&gt;{{ session('success') }}&lt;/div&gt;
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>        @endif
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>        @yield('content')
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>    &lt;/main&gt;
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>&lt;/body&gt;
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a>&lt;/html&gt;
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a>
+<a id="__codelineno-17-26" name="__codelineno-17-26" href="#__codelineno-17-26"></a>- **Tip**: Untuk membuat navigasi yang dapat digunakan kembali, Anda dapat membuat komponen Blade seperti yang dijelaskan dalam [Komponen Blade: Navigasi Menu](komponen-navigasi.md).
+<a id="__codelineno-17-27" name="__codelineno-17-27" href="#__codelineno-17-27"></a>
+<a id="__codelineno-17-28" name="__codelineno-17-28" href="#__codelineno-17-28"></a>### 8.2 Daftar: `resources/views/book/index.blade.php`
+<a id="__codelineno-17-29" name="__codelineno-17-29" href="#__codelineno-17-29"></a>
+<a id="__codelineno-17-30" name="__codelineno-17-30" href="#__codelineno-17-30"></a>```blade
+<a id="__codelineno-17-31" name="__codelineno-17-31" href="#__codelineno-17-31"></a>@extends('layouts.app')
+<a id="__codelineno-17-32" name="__codelineno-17-32" href="#__codelineno-17-32"></a>
+<a id="__codelineno-17-33" name="__codelineno-17-33" href="#__codelineno-17-33"></a>@section('title', 'Daftar Buku')
+<a id="__codelineno-17-34" name="__codelineno-17-34" href="#__codelineno-17-34"></a>
+<a id="__codelineno-17-35" name="__codelineno-17-35" href="#__codelineno-17-35"></a>@section('content')
+<a id="__codelineno-17-36" name="__codelineno-17-36" href="#__codelineno-17-36"></a>&lt;div class="d-flex justify-content-between align-items-center mb-3"&gt;
+<a id="__codelineno-17-37" name="__codelineno-17-37" href="#__codelineno-17-37"></a>    &lt;h1 class="h3 mb-0"&gt;Daftar Buku&lt;/h1&gt;
+<a id="__codelineno-17-38" name="__codelineno-17-38" href="#__codelineno-17-38"></a>    &lt;a href="{{ route('book.create') }}" class="btn btn-primary"&gt;+ Tambah Buku&lt;/a&gt;
+<a id="__codelineno-17-39" name="__codelineno-17-39" href="#__codelineno-17-39"></a>&lt;/div&gt;
+<a id="__codelineno-17-40" name="__codelineno-17-40" href="#__codelineno-17-40"></a>
+<a id="__codelineno-17-41" name="__codelineno-17-41" href="#__codelineno-17-41"></a>&lt;form method="GET" class="mb-3"&gt;
+<a id="__codelineno-17-42" name="__codelineno-17-42" href="#__codelineno-17-42"></a>    &lt;div class="input-group"&gt;
+<a id="__codelineno-17-43" name="__codelineno-17-43" href="#__codelineno-17-43"></a>        &lt;input type="text" name="q" value="{{ request('q') }}"
+<a id="__codelineno-17-44" name="__codelineno-17-44" href="#__codelineno-17-44"></a>               class="form-control" placeholder="Cari judul atau penulis..."&gt;
+<a id="__codelineno-17-45" name="__codelineno-17-45" href="#__codelineno-17-45"></a>        &lt;button class="btn btn-outline-secondary"&gt;Cari&lt;/button&gt;
+<a id="__codelineno-17-46" name="__codelineno-17-46" href="#__codelineno-17-46"></a>    &lt;/div&gt;
+<a id="__codelineno-17-47" name="__codelineno-17-47" href="#__codelineno-17-47"></a>&lt;/form&gt;
+<a id="__codelineno-17-48" name="__codelineno-17-48" href="#__codelineno-17-48"></a>
+<a id="__codelineno-17-49" name="__codelineno-17-49" href="#__codelineno-17-49"></a>&lt;div class="card"&gt;
+<a id="__codelineno-17-50" name="__codelineno-17-50" href="#__codelineno-17-50"></a>    &lt;div class="table-responsive"&gt;
+<a id="__codelineno-17-51" name="__codelineno-17-51" href="#__codelineno-17-51"></a>        &lt;table class="table table-striped mb-0"&gt;
+<a id="__codelineno-17-52" name="__codelineno-17-52" href="#__codelineno-17-52"></a>            &lt;thead&gt;
+<a id="__codelineno-17-53" name="__codelineno-17-53" href="#__codelineno-17-53"></a>                &lt;tr&gt;
+<a id="__codelineno-17-54" name="__codelineno-17-54" href="#__codelineno-17-54"></a>                    &lt;th&gt;#&lt;/th&gt;
+<a id="__codelineno-17-55" name="__codelineno-17-55" href="#__codelineno-17-55"></a>                    &lt;th&gt;Judul&lt;/th&gt;
+<a id="__codelineno-17-56" name="__codelineno-17-56" href="#__codelineno-17-56"></a>                    &lt;th&gt;Penulis&lt;/th&gt;
+<a id="__codelineno-17-57" name="__codelineno-17-57" href="#__codelineno-17-57"></a>                    &lt;th&gt;Tahun&lt;/th&gt;
+<a id="__codelineno-17-58" name="__codelineno-17-58" href="#__codelineno-17-58"></a>                    &lt;th class="text-end"&gt;Aksi&lt;/th&gt;
+<a id="__codelineno-17-59" name="__codelineno-17-59" href="#__codelineno-17-59"></a>                &lt;/tr&gt;
+<a id="__codelineno-17-60" name="__codelineno-17-60" href="#__codelineno-17-60"></a>            &lt;/thead&gt;
+<a id="__codelineno-17-61" name="__codelineno-17-61" href="#__codelineno-17-61"></a>            &lt;tbody&gt;
+<a id="__codelineno-17-62" name="__codelineno-17-62" href="#__codelineno-17-62"></a>                @forelse ($book as $item)
+<a id="__codelineno-17-63" name="__codelineno-17-63" href="#__codelineno-17-63"></a>                    &lt;tr&gt;
+<a id="__codelineno-17-64" name="__codelineno-17-64" href="#__codelineno-17-64"></a>                        &lt;td&gt;{{ $book-&gt;firstItem() + $loop-&gt;index }}&lt;/td&gt;
+<a id="__codelineno-17-65" name="__codelineno-17-65" href="#__codelineno-17-65"></a>                        &lt;td&gt;{{ $item-&gt;title }}&lt;/td&gt;
+<a id="__codelineno-17-66" name="__codelineno-17-66" href="#__codelineno-17-66"></a>                        &lt;td&gt;{{ $item-&gt;writer }}&lt;/td&gt;
+<a id="__codelineno-17-67" name="__codelineno-17-67" href="#__codelineno-17-67"></a>                        &lt;td&gt;{{ $item-&gt;publication_year }}&lt;/td&gt;
+<a id="__codelineno-17-68" name="__codelineno-17-68" href="#__codelineno-17-68"></a>                        &lt;td class="text-end"&gt;
+<a id="__codelineno-17-69" name="__codelineno-17-69" href="#__codelineno-17-69"></a>                            &lt;a href="{{ route('book.show', $item) }}" class="btn btn-sm btn-info"&gt;Detail&lt;/a&gt;
+<a id="__codelineno-17-70" name="__codelineno-17-70" href="#__codelineno-17-70"></a>                            &lt;a href="{{ route('book.edit', $item) }}" class="btn btn-sm btn-warning"&gt;Edit&lt;/a&gt;
+<a id="__codelineno-17-71" name="__codelineno-17-71" href="#__codelineno-17-71"></a>                            &lt;form action="{{ route('book.destroy', $item) }}" method="POST"
+<a id="__codelineno-17-72" name="__codelineno-17-72" href="#__codelineno-17-72"></a>                                  class="d-inline"
+<a id="__codelineno-17-73" name="__codelineno-17-73" href="#__codelineno-17-73"></a>                                  onsubmit="return confirm('Yakin hapus buku ini?')"&gt;
+<a id="__codelineno-17-74" name="__codelineno-17-74" href="#__codelineno-17-74"></a>                                @csrf
+<a id="__codelineno-17-75" name="__codelineno-17-75" href="#__codelineno-17-75"></a>                                @method('DELETE')
+<a id="__codelineno-17-76" name="__codelineno-17-76" href="#__codelineno-17-76"></a>                                &lt;button class="btn btn-sm btn-danger"&gt;Hapus&lt;/button&gt;
+<a id="__codelineno-17-77" name="__codelineno-17-77" href="#__codelineno-17-77"></a>                            &lt;/form&gt;
+<a id="__codelineno-17-78" name="__codelineno-17-78" href="#__codelineno-17-78"></a>                        &lt;/td&gt;
+<a id="__codelineno-17-79" name="__codelineno-17-79" href="#__codelineno-17-79"></a>                    &lt;/tr&gt;
+<a id="__codelineno-17-80" name="__codelineno-17-80" href="#__codelineno-17-80"></a>                @empty
+<a id="__codelineno-17-81" name="__codelineno-17-81" href="#__codelineno-17-81"></a>                    &lt;tr&gt;
+<a id="__codelineno-17-82" name="__codelineno-17-82" href="#__codelineno-17-82"></a>                        &lt;td colspan="5" class="text-center text-muted py-4"&gt;Belum ada data.&lt;/td&gt;
+<a id="__codelineno-17-83" name="__codelineno-17-83" href="#__codelineno-17-83"></a>                    &lt;/tr&gt;
+<a id="__codelineno-17-84" name="__codelineno-17-84" href="#__codelineno-17-84"></a>                @endforelse
+<a id="__codelineno-17-85" name="__codelineno-17-85" href="#__codelineno-17-85"></a>            &lt;/tbody&gt;
+<a id="__codelineno-17-86" name="__codelineno-17-86" href="#__codelineno-17-86"></a>        &lt;/table&gt;
+<a id="__codelineno-17-87" name="__codelineno-17-87" href="#__codelineno-17-87"></a>    &lt;/div&gt;
+<a id="__codelineno-17-88" name="__codelineno-17-88" href="#__codelineno-17-88"></a>&lt;/div&gt;
+<a id="__codelineno-17-89" name="__codelineno-17-89" href="#__codelineno-17-89"></a>
+<a id="__codelineno-17-90" name="__codelineno-17-90" href="#__codelineno-17-90"></a>&lt;div class="mt-3"&gt;
+<a id="__codelineno-17-91" name="__codelineno-17-91" href="#__codelineno-17-91"></a>    {{ $book-&gt;links() }}
+<a id="__codelineno-17-92" name="__codelineno-17-92" href="#__codelineno-17-92"></a>&lt;/div&gt;
+<a id="__codelineno-17-93" name="__codelineno-17-93" href="#__codelineno-17-93"></a>@endsection
+</code></pre></div>
+<h3 id="83-form-bersama-resourcesviewsbook_formbladephp">8.3 Form bersama: <code>resources/views/book/_form.blade.php</code><a class="headerlink" href="#83-form-bersama-resourcesviewsbook_formbladephp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;div class="mb-3"&gt;
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    &lt;label for="title" class="form-label"&gt;Judul&lt;/label&gt;
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    &lt;input type="text" id="title" name="title"
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>           value="{{ old('title', isset($book) ? $book-&gt;title : '') }}"
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>           class="form-control @error('title') is-invalid @enderror"&gt;
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    @error('title') &lt;div class="invalid-feedback"&gt;{{ $message }}&lt;/div&gt; @enderror
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>&lt;/div&gt;
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>&lt;div class="mb-3"&gt;
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    &lt;label for="writer" class="form-label"&gt;Penulis&lt;/label&gt;
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    &lt;input type="text" id="writer" name="writer"
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>           value="{{ old('writer', isset($book) ? $book-&gt;writer : '') }}"
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>           class="form-control @error('writer') is-invalid @enderror"&gt;
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>    @error('writer') &lt;div class="invalid-feedback"&gt;{{ $message }}&lt;/div&gt; @enderror
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>&lt;/div&gt;
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>&lt;div class="mb-3"&gt;
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>    &lt;label for="publication_year" class="form-label"&gt;Tahun Terbit&lt;/label&gt;
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>    &lt;input type="number" id="publication_year" name="publication_year"
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>           value="{{ old('publication_year', isset($book) ? $book-&gt;publication_year : '') }}"
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>           class="form-control @error('publication_year') is-invalid @enderror"&gt;
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>    @error('publication_year') &lt;div class="invalid-feedback"&gt;{{ $message }}&lt;/div&gt; @enderror
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>&lt;/div&gt;
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>&lt;div class="mb-3"&gt;
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>    &lt;label for="description" class="form-label"&gt;Deskripsi&lt;/label&gt;
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>    &lt;textarea id="description" name="description" rows="4"
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>              class="form-control @error('description') is-invalid @enderror"&gt;{{ old('description', isset($book) ? $book-&gt;description : '') }}&lt;/textarea&gt;
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>    @error('description') &lt;div class="invalid-feedback"&gt;{{ $message }}&lt;/div&gt; @enderror
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>&lt;/div&gt;
+</code></pre></div>
+<h3 id="84-tambah-resourcesviewsbookcreatebladephp">8.4 Tambah: <code>resources/views/book/create.blade.php</code><a class="headerlink" href="#84-tambah-resourcesviewsbookcreatebladephp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>@extends('layouts.app')
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>@section('title', 'Tambah Buku')
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>@section('content')
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>&lt;h1 class="h3 mb-3"&gt;Tambah Buku&lt;/h1&gt;
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>&lt;div class="card"&gt;
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    &lt;div class="card-body"&gt;
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>        &lt;form action="{{ route('book.store') }}" method="POST"&gt;
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>            @csrf
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>            @include('book._form')
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>            &lt;button class="btn btn-primary"&gt;Simpan&lt;/button&gt;
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>            &lt;a href="{{ route('book.index') }}" class="btn btn-secondary"&gt;Batal&lt;/a&gt;
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>        &lt;/form&gt;
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>    &lt;/div&gt;
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>&lt;/div&gt;
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>@endsection
+</code></pre></div>
+<h3 id="85-edit-resourcesviewsbookeditbladephp">8.5 Edit: <code>resources/views/book/edit.blade.php</code><a class="headerlink" href="#85-edit-resourcesviewsbookeditbladephp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>@extends('layouts.app')
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>@section('title', 'Edit Buku')
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>@section('content')
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>&lt;h1 class="h3 mb-3"&gt;Edit Buku&lt;/h1&gt;
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>&lt;div class="card"&gt;
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    &lt;div class="card-body"&gt;
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>        &lt;form action="{{ route('book.update', $book) }}" method="POST"&gt;
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>            @csrf
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>            @method('PUT')
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>            @include('book._form')
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>            &lt;button class="btn btn-primary"&gt;Perbarui&lt;/button&gt;
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>            &lt;a href="{{ route('book.index') }}" class="btn btn-secondary"&gt;Batal&lt;/a&gt;
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>        &lt;/form&gt;
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>    &lt;/div&gt;
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>&lt;/div&gt;
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>@endsection
+</code></pre></div>
+<h3 id="86-detail-resourcesviewsbookshowbladephp">8.6 Detail: <code>resources/views/book/show.blade.php</code><a class="headerlink" href="#86-detail-resourcesviewsbookshowbladephp" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>@extends('layouts.app')
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>@section('title', $book-&gt;title)
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>@section('content')
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>&lt;div class="card"&gt;
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    &lt;div class="card-body"&gt;
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>        &lt;h1 class="h3"&gt;{{ $book-&gt;title }}&lt;/h1&gt;
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>        &lt;p class="text-muted"&gt;
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>            {{ $book-&gt;writer }} &amp;middot; {{ $book-&gt;publication_year }}
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        &lt;/p&gt;
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>        &lt;p&gt;{{ $book-&gt;description ?: 'Tidak ada deskripsi.' }}&lt;/p&gt;
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>        &lt;a href="{{ route('book.index') }}" class="btn btn-secondary"&gt;Kembali&lt;/a&gt;
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>    &lt;/div&gt;
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>&lt;/div&gt;
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>@endsection
+</code></pre></div>
+<hr />
+<h2 id="9-jalankan-dan-coba-manual">9. Jalankan dan Coba Manual<a class="headerlink" href="#9-jalankan-dan-coba-manual" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>serve
+</code></pre></div>
+<p>Buka <code>http://localhost:8000</code> (atau <code>http://ujicoba-crud.test</code> bila memakai Herd), lalu coba:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Data contoh tampil di daftar, 10 per halaman</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pencarian judul/penulis berfungsi</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tambah buku baru berhasil, muncul pesan sukses</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Kirim form kosong, muncul pesan error di bawah kolom</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Edit buku, data lama terisi otomatis di form</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Halaman detail menampilkan data yang benar</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Hapus buku menampilkan konfirmasi, lalu data hilang</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tidak perlu <code>npm run dev</code></p>
+<p>Aplikasi ini memakai Bootstrap dari CDN, jadi tidak membutuhkan Vite. Kalau nanti kamu mengelola CSS dan JS sendiri, lihat <a href="../npm/">npm dan npx</a>. Pengaturan database (SQLite) tersimpan di file <code>.env</code>, penjelasannya ada di <a href="../env/">File <code>.env</code></a>.</p>
+</div>
+<hr />
+<h2 id="10-feature-test-otomatis">10. Feature Test Otomatis<a class="headerlink" href="#10-feature-test-otomatis" title="Permanent link">&para;</a></h2>
+<p>Buat file test:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>make:test<span class="w"> </span>BookTest<span class="w"> </span>--pest
+</code></pre></div>
+<p><code>tests/Feature/BookTest.php</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="cp">&lt;?php</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="k">use</span> <span class="nx">App\Models\Book</span><span class="p">;</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="k">use</span> <span class="nx">Illuminate\Foundation\Testing\RefreshDatabase</span><span class="p">;</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="nx">uses</span><span class="p">(</span><span class="nx">RefreshDatabase</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="nv">$dataValid</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Laravel untuk Pemula'</span><span class="p">,</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="s1">'writer'</span> <span class="o">=&gt;</span> <span class="s1">'Budi Santoso'</span><span class="p">,</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>    <span class="s1">'publication_year'</span> <span class="o">=&gt;</span> <span class="mi">2024</span><span class="p">,</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>    <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Belajar Laravel dari nol.'</span><span class="p">,</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="p">];</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'menampilkan daftar buku'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    <span class="nx">Book</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">))</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="o">-&gt;</span><span class="na">assertOk</span><span class="p">()</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>        <span class="o">-&gt;</span><span class="na">assertViewHas</span><span class="p">(</span><span class="s1">'book'</span><span class="p">);</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="p">});</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'dapat menambah buku'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$dataValid</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.store'</span><span class="p">),</span> <span class="nv">$dataValid</span><span class="p">)</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>        <span class="o">-&gt;</span><span class="na">assertRedirect</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">));</span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>
+<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertDatabaseHas</span><span class="p">(</span><span class="s1">'books'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Laravel untuk Pemula'</span><span class="p">]);</span>
+<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a><span class="p">});</span>
+<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>
+<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'menolak data tidak valid saat menambah'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.store'</span><span class="p">),</span> <span class="p">[])</span>
+<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>        <span class="o">-&gt;</span><span class="na">assertSessionHasErrors</span><span class="p">([</span><span class="s1">'title'</span><span class="p">,</span> <span class="s1">'writer'</span><span class="p">,</span> <span class="s1">'publication_year'</span><span class="p">]);</span>
+<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a><span class="p">});</span>
+<a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a>
+<a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'menampilkan detail buku'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a>    <span class="nv">$book</span> <span class="o">=</span> <span class="nx">Book</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+<a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a>
+<a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.show'</span><span class="p">,</span> <span class="nv">$book</span><span class="p">))</span>
+<a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a>        <span class="o">-&gt;</span><span class="na">assertOk</span><span class="p">()</span>
+<a id="__codelineno-24-40" name="__codelineno-24-40" href="#__codelineno-24-40"></a>        <span class="o">-&gt;</span><span class="na">assertSee</span><span class="p">(</span><span class="nv">$book</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">);</span>
+<a id="__codelineno-24-41" name="__codelineno-24-41" href="#__codelineno-24-41"></a><span class="p">});</span>
+<a id="__codelineno-24-42" name="__codelineno-24-42" href="#__codelineno-24-42"></a>
+<a id="__codelineno-24-43" name="__codelineno-24-43" href="#__codelineno-24-43"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'dapat memperbarui buku'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$dataValid</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-24-44" name="__codelineno-24-44" href="#__codelineno-24-44"></a>    <span class="nv">$book</span> <span class="o">=</span> <span class="nx">Book</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+<a id="__codelineno-24-45" name="__codelineno-24-45" href="#__codelineno-24-45"></a>
+<a id="__codelineno-24-46" name="__codelineno-24-46" href="#__codelineno-24-46"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.update'</span><span class="p">,</span> <span class="nv">$book</span><span class="p">),</span> <span class="nv">$dataValid</span><span class="p">)</span>
+<a id="__codelineno-24-47" name="__codelineno-24-47" href="#__codelineno-24-47"></a>        <span class="o">-&gt;</span><span class="na">assertRedirect</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">));</span>
+<a id="__codelineno-24-48" name="__codelineno-24-48" href="#__codelineno-24-48"></a>
+<a id="__codelineno-24-49" name="__codelineno-24-49" href="#__codelineno-24-49"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertDatabaseHas</span><span class="p">(</span><span class="s1">'books'</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-24-50" name="__codelineno-24-50" href="#__codelineno-24-50"></a>        <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+<a id="__codelineno-24-51" name="__codelineno-24-51" href="#__codelineno-24-51"></a>        <span class="s1">'title'</span> <span class="o">=&gt;</span> <span class="s1">'Laravel untuk Pemula'</span><span class="p">,</span>
+<a id="__codelineno-24-52" name="__codelineno-24-52" href="#__codelineno-24-52"></a>    <span class="p">]);</span>
+<a id="__codelineno-24-53" name="__codelineno-24-53" href="#__codelineno-24-53"></a><span class="p">});</span>
+<a id="__codelineno-24-54" name="__codelineno-24-54" href="#__codelineno-24-54"></a>
+<a id="__codelineno-24-55" name="__codelineno-24-55" href="#__codelineno-24-55"></a><span class="nx">it</span><span class="p">(</span><span class="s1">'dapat menghapus buku'</span><span class="p">,</span> <span class="k">function</span> <span class="p">()</span> <span class="p">{</span>
+<a id="__codelineno-24-56" name="__codelineno-24-56" href="#__codelineno-24-56"></a>    <span class="nv">$book</span> <span class="o">=</span> <span class="nx">Book</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+<a id="__codelineno-24-57" name="__codelineno-24-57" href="#__codelineno-24-57"></a>
+<a id="__codelineno-24-58" name="__codelineno-24-58" href="#__codelineno-24-58"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.destroy'</span><span class="p">,</span> <span class="nv">$book</span><span class="p">))</span>
+<a id="__codelineno-24-59" name="__codelineno-24-59" href="#__codelineno-24-59"></a>        <span class="o">-&gt;</span><span class="na">assertRedirect</span><span class="p">(</span><span class="nx">route</span><span class="p">(</span><span class="s1">'book.index'</span><span class="p">));</span>
+<a id="__codelineno-24-60" name="__codelineno-24-60" href="#__codelineno-24-60"></a>
+<a id="__codelineno-24-61" name="__codelineno-24-61" href="#__codelineno-24-61"></a>    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertDatabaseMissing</span><span class="p">(</span><span class="s1">'books'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="nv">$book</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">]);</span>
+<a id="__codelineno-24-62" name="__codelineno-24-62" href="#__codelineno-24-62"></a><span class="p">});</span>
+</code></pre></div>
+<p>Jalankan:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>php<span class="w"> </span>artisan<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<p>Semua test harus hijau (<em>passed</em>).</p>
+<hr />
+<h2 id="11-ringkasan-command-yang-dipakai">11. Ringkasan Command yang Dipakai<a class="headerlink" href="#11-ringkasan-command-yang-dipakai" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Fungsi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>laravel new ujicoba-crud</code></td>
+<td>Membuat project baru</td>
+</tr>
+<tr>
+<td><code>php artisan make:model Book -mf</code></td>
+<td>Model + migration + factory</td>
+</tr>
+<tr>
+<td><code>php artisan migrate</code></td>
+<td>Membuat tabel di database</td>
+</tr>
+<tr>
+<td><code>php artisan db:seed</code></td>
+<td>Mengisi data contoh</td>
+</tr>
+<tr>
+<td><code>php artisan make:request BookRequest</code></td>
+<td>Membuat kelas validasi</td>
+</tr>
+<tr>
+<td><code>php artisan make:controller BookController --resource --model=Book</code></td>
+<td>Controller CRUD lengkap</td>
+</tr>
+<tr>
+<td><code>php artisan route:list --name=book</code></td>
+<td>Melihat daftar route</td>
+</tr>
+<tr>
+<td><code>php artisan make:test BookTest --pest</code></td>
+<td>Membuat file test</td>
+</tr>
+<tr>
+<td><code>php artisan test</code></td>
+<td>Menjalankan semua test</td>
+</tr>
+</tbody>
+</table>
+<p>Untuk mengulang dari awal dengan data bersih:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>php<span class="w"> </span>artisan<span class="w"> </span>migrate:fresh<span class="w"> </span>--seed
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Hati-hati</p>
+<p><code>migrate:fresh</code> <strong>menghapus semua tabel</strong> lalu membuatnya ulang. Pakai hanya di lingkungan belajar/pengembangan, jangan di database produksi.</p>
+</div>
+<hr />
+<h2 id="12-tantangan-lanjutan">12. Tantangan Lanjutan<a class="headerlink" href="#12-tantangan-lanjutan" title="Permanent link">&para;</a></h2>
+<p>Setelah CRUD dasar jalan, coba kembangkan:</p>
+<ol>
+<li>Tambah kolom <code>stok</code> dan <code>kategori</code>, lalu buat migration baru dengan <code>php artisan make:migration add_stok_to_books_table</code>.</li>
+<li>Tambah upload gambar sampul buku (<code>Storage</code> dan <code>php artisan storage:link</code>).</li>
+<li>Ganti hapus biasa menjadi <strong>soft delete</strong> (<code>SoftDeletes</code>).</li>
+<li>Tambah login dengan Laravel Breeze agar hanya pengguna terdaftar yang bisa mengubah data. Cara memasang package dijelaskan di <a href="../composer/">Composer</a>.</li>
+<li>Buat relasi Kategori dan Buku (one-to-many) - <a href="../crud-relasi/">CRUD dengan Relasi</a></li>
+</ol>
+<hr />
+<p>Materi terkait: <a href="../env/">File <code>.env</code></a> · <a href="../composer/">Composer</a> · <a href="../npm/">npm dan npx</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Kembali ke atas
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../halaman-beranda/" class="md-footer__link md-footer__link--prev" aria-label="Sebelumnya: Halaman Beranda">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Sebelumnya
+              </span>
+              <div class="md-ellipsis">
+                Halaman Beranda
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../crud-relasi/" class="md-footer__link md-footer__link--next" aria-label="Selanjutnya: CRUD dengan Relasi">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Selanjutnya
+              </span>
+              <div class="md-ellipsis">
+                CRUD dengan Relasi
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Tersalin ke clipboard", "clipboard.copy": "Salin ke clipboard", "search.result.more.one": "1 lagi di halaman ini", "search.result.more.other": "# lagi di halaman ini", "search.result.none": "Tidak ada dokumen yang sesuai", "search.result.one": "1 dokumen ditemukan", "search.result.other": "# dokumen ditemukan", "search.result.placeholder": "Ketik untuk mulai pencarian", "search.result.term.missing": "Tidak ada", "select.version": "Pilih versi"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
