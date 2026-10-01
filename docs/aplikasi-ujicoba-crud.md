@@ -329,7 +329,8 @@ mkdir -p resources/views/layouts resources/views/book
     </main>
 </body>
 </html>
-```
+
+- **Tip**: Untuk membuat navigasi yang dapat digunakan kembali, Anda dapat membuat komponen Blade seperti yang dijelaskan dalam [Komponen Blade: Navigasi Menu](komponen-navigasi.md).
 
 ### 8.2 Daftar: `resources/views/book/index.blade.php`
 
@@ -643,7 +644,7 @@ Setelah CRUD dasar jalan, coba kembangkan:
 2. Tambah upload gambar sampul buku (`Storage` dan `php artisan storage:link`).
 3. Ganti hapus biasa menjadi **soft delete** (`SoftDeletes`).
 4. Tambah login dengan Laravel Breeze agar hanya pengguna terdaftar yang bisa mengubah data. Cara memasang package dijelaskan di [Composer](composer.md).
-5. Buat relasi `Kategori` dan `Buku` (one-to-many).
+5. Buat relasi Kategori dan Buku (one-to-many) - [CRUD dengan Relasi](crud-relasi.md)
 
 ---
 

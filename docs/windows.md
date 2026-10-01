@@ -208,5 +208,6 @@ Nama script Composer di atas bisa dicek di bagian `scripts` pada `composer.json`
 
 ## 5. Langkah berikutnya
 
+- Buat dan jelajahi halaman beranda/dashboard: [Halaman Beranda](halaman-beranda.md)
 - Pelajari dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
 - Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).

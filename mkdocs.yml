@@ -41,7 +41,7 @@ nav:
       - CRUD dengan Relasi: crud-relasi.md
       - CRUD dengan Relasi Many-to-Many: crud-many-to-many.md
   - Komponen Blade:
-      - Navigasi Menu: komponen-navigisi.md
+      - Navigasi Menu: komponen-navigasi.md
 
 markdown_extensions:
   - admonition

@@ -295,5 +295,6 @@ Setelah itu buat project dengan `laravel new my-app`, lalu jalankan `composer ru
 
 ## 6. Langkah berikutnya
 
+- Buat dan jelajahi halaman beranda/dashboard: [Halaman Beranda](halaman-beranda.md)
 - Pelajari dasar-dasarnya: [File `.env`](env.md), [Composer](composer.md), dan [npm dan npx](npm.md).
 - Praktik langsung: [Aplikasi Uji Coba: CRUD Data Buku](aplikasi-ujicoba-crud.md).
