@@ -73,7 +73,7 @@ php artisan migrate
 ```
 
 !!! tip "Referensi command"
-Penjelasan `make:model`, `migrate`, dan command Artisan lainnya ada di bagian _Command Artisan_ pada panduan instalasi: [Windows](windows.md#3-command-artisan), [macOS](macos.md#3-command-artisan), atau [Linux](linux.md#3-command-artisan).
+    Penjelasan `make:model`, `migrate`, dan command Artisan lainnya ada di bagian _Command Artisan_ pada panduan instalasi: [Windows](windows.md#3-command-artisan), [macOS](macos.md#3-command-artisan), atau [Linux](linux.md#3-command-artisan).
 
 ---
 
@@ -304,7 +304,7 @@ mkdir -p resources/views/layouts resources/views/book
 
 ### 8.1 Layout: `resources/views/layouts/app.blade.php`
 
-```blade
+````blade
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -398,7 +398,7 @@ mkdir -p resources/views/layouts resources/views/book
     {{ $book->links() }}
 </div>
 @endsection
-```
+````
 
 ### 8.3 Form bersama: `resources/views/book/_form.blade.php`
 
@@ -632,7 +632,7 @@ php artisan migrate:fresh --seed
 ```
 
 !!! warning "Hati-hati"
-`migrate:fresh` **menghapus semua tabel** lalu membuatnya ulang. Pakai hanya di lingkungan belajar/pengembangan, jangan di database produksi.
+    `migrate:fresh` **menghapus semua tabel** lalu membuatnya ulang. Pakai hanya di lingkungan belajar/pengembangan, jangan di database produksi.
 
 ---
 
