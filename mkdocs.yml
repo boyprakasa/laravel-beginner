@@ -36,12 +36,12 @@ nav:
       - Composer: composer.md
       - npm dan npx: npm.md
       - Halaman Beranda: halaman-beranda.md
-  - Komponen Blade:
-      - Navigasi Menu: komponen-navigasi.md
   - Aplikasi Uji Coba:
       - CRUD Data Buku: aplikasi-ujicoba-crud.md
       - CRUD dengan Relasi: crud-relasi.md
       - CRUD dengan Relasi Many-to-Many: crud-many-to-many.md
+  - Komponen Blade:
+      - Navigasi Menu: komponen-navigisi.md
 
 markdown_extensions:
   - admonition
